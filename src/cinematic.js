@@ -1,0 +1,215 @@
+// Scroll cinematic for Acalanes Data Fest 2026.
+//
+// A ~600svh wrapper holds a sticky 100svh stage. Scroll progress p (0..1)
+// maps deterministically to phases — no time-based motion in the phase
+// logic; a rAF-throttled passive scroll listener re-renders on scroll only.
+//
+//   p 0.00-0.24  blue squares pixel-dissolve in until the stage is covered
+//   p 0.25-0.35  white text: "The Bay Area has always been the center of technology."
+//   p 0.35-0.50  3D California hologram (CSS idle animation, scroll-driven opacity)
+//   p 0.51-0.65  text 1, hologram, and squares fade out back to white
+//   p 0.70-1.00  final text: in 0.70-0.78, hold 0.78-0.94, out 0.94-1.00
+//                 cross-dissolve into the Tracks section (pulled up beneath
+//                 the stage, faded in 0.90-1.00, counter-transform locked to
+//                 the viewport so the page holds still): at p = 1 the tracks
+//                 fill the viewport and the pin releases exactly at their top
+//
+// prefers-reduced-motion (or no JS): the cinematic never enables and the
+// page falls back to a static hero + final text in normal flow.
+
+import './cinematic.css';
+
+// One uniform vibrant blue for every decorative scroll-fill square
+// (brand elements elsewhere — buttons, headline accent, links — stay
+// in vibrant brand blue #0d45d2).
+const BLUE = '#2E4BFF';
+
+const clamp01 = (x) => Math.min(1, Math.max(0, x));
+
+// smoothstep between a and b
+const smooth = (a, b, x) => {
+  const t = clamp01((x - a) / (b - a));
+  return t * t * (3 - 2 * t);
+};
+
+export function initCinematic() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const pin = document.getElementById('pin');
+  const stage = document.getElementById('stage');
+  const canvas = document.getElementById('squares');
+  const hero = document.getElementById('layerHero');
+  const text1 = document.getElementById('layerText1');
+  const holo = document.getElementById('layerHolo');
+  const final = document.getElementById('layerFinal');
+  const tracks = document.querySelector('.tracks');
+  if (!pin || !stage || !canvas || !hero || !text1 || !holo || !final || !tracks) return;
+
+  document.documentElement.classList.add('has-cinematic');
+
+  const ctx = canvas.getContext('2d');
+  let cells = []; // {x, y, threshold} in CSS px, shuffled once
+  let cellPx = 64;
+  let pinTop = 0;
+  let pinRange = 1;
+
+  // Deterministic shuffle (mulberry32) so the pop-in order is stable
+  // per load and identical across resizes.
+  function buildGrid() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const w = stage.clientWidth;
+    const h = stage.clientHeight;
+    canvas.width = Math.max(1, Math.round(w * dpr));
+    canvas.height = Math.max(1, Math.round(h * dpr));
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    cellPx = Math.max(44, Math.min(76, Math.floor(Math.min(w, h) / 14)));
+    const cols = Math.ceil(w / cellPx);
+    const rows = Math.ceil(h / cellPx);
+    cells = [];
+    for (let r = 0; r < rows; r++) {
+      for (let c = 0; c < cols; c++) {
+        cells.push({ x: c * cellPx, y: r * cellPx, threshold: 0 });
+      }
+    }
+
+    let seed = 0xc0ffee;
+    const rand = () => {
+      seed |= 0;
+      seed = (seed + 0x6d2b79f5) | 0;
+      let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+    for (let i = cells.length - 1; i > 0; i--) {
+      const j = Math.floor(rand() * (i + 1));
+      const tmp = cells[i];
+      cells[i] = cells[j];
+      cells[j] = tmp;
+    }
+    const n = cells.length;
+    cells.forEach((cell, i) => {
+      // Spread dissolve thresholds across phase A (0.02 -> 0.18). Each cell
+      // grows from its center with a small randomized delay, giving a
+      // pixel-dissolve feel as scroll progress increases. Full coverage
+      // lands by p = 0.24, right as the Bay Area text arrives.
+      cell.threshold = 0.02 + (i / Math.max(1, n - 1)) * 0.16;
+      cell.delay = rand() * 0.03;
+      cell.jitter = 0.85 + rand() * 0.15;
+    });
+
+    pinTop = pin.getBoundingClientRect().top + window.scrollY;
+    pinRange = Math.max(1, pin.offsetHeight - stage.clientHeight);
+  }
+
+  function progress() {
+    return clamp01((window.scrollY - pinTop) / pinRange);
+  }
+
+  function drawSquares(p) {
+    const w = stage.clientWidth;
+    const h = stage.clientHeight;
+    ctx.clearRect(0, 0, w, h);
+    const fade = 1 - smooth(0.53, 0.65, p); // phase D: squares dissolve
+    if (fade <= 0 || p <= 0) return;
+    const half = cellPx / 2;
+    for (let i = 0; i < cells.length; i++) {
+      const cell = cells[i];
+      // pixel-dissolve: each cell grows from its center once its
+      // (threshold + randomized delay) window is reached by the scroll
+      // progress; alpha pops slightly faster than size for texture
+      const grow = smooth(cell.threshold, cell.threshold + 0.03 + cell.delay, p);
+      if (grow <= 0) continue;
+      const size = cellPx * grow;
+      const alpha = smooth(cell.threshold, cell.threshold + 0.02, p);
+      ctx.fillStyle = BLUE;
+      ctx.globalAlpha = alpha * fade * cell.jitter;
+      ctx.fillRect(cell.x + half - size / 2, cell.y + half - size / 2, size, size);
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  function setLayer(el, opacity, transform) {
+    el.style.opacity = opacity.toFixed(3);
+    if (transform !== undefined) el.style.transform = transform;
+    el.style.visibility = opacity <= 0.001 ? 'hidden' : 'visible';
+  }
+
+  function render() {
+    const p = progress();
+    const vh = stage.clientHeight;
+
+    // hero: out by p = 0.06 as the cinematic takes over
+    const heroOut = smooth(0, 0.06, p);
+    setLayer(hero, 1 - heroOut, `translateY(${(-28 * heroOut).toFixed(1)}px)`);
+
+    drawSquares(p);
+
+    // text 1: in 0.25-0.33, drifts up as the hologram arrives, out 0.51-0.59
+    const t1in = smooth(0.25, 0.33, p);
+    const t1out = smooth(0.51, 0.59, p);
+    const t1rise = smooth(0.35, 0.45, p);
+    setLayer(
+      text1,
+      t1in * (1 - t1out),
+      `translateY(${(24 * (1 - t1in) - vh * 0.24 * t1rise).toFixed(1)}px)`,
+    );
+
+    // hologram: in 0.35-0.43, nudged below center, out 0.51-0.59
+    const hIn = smooth(0.35, 0.43, p);
+    const hOut = smooth(0.51, 0.59, p);
+    setLayer(
+      holo,
+      hIn * (1 - hOut),
+      `translateY(${(vh * 0.05 * hIn).toFixed(1)}px) scale(${(0.9 + 0.1 * hIn).toFixed(3)})`,
+    );
+
+    // final text: in 0.70-0.78, hold 0.78-0.94, out 0.94-1.00
+    // (the big school logo lives inside #layerFinal, so it fades with the text)
+    const fIn = smooth(0.70, 0.78, p);
+    const fOut = smooth(0.94, 1.0, p);
+    setLayer(final, fIn * (1 - fOut), `translateY(${(28 * (1 - fIn)).toFixed(1)}px)`);
+
+    // cross-dissolve into the tracks section: it sits pulled up beneath the
+    // stage's final viewport (see .has-cinematic .tracks); fade it in as the
+    // finale dissolves out, so at p = 1 the tracks fill the viewport and the
+    // pin releases with the tracks top exactly at the viewport top.
+    //
+    // While the dissolve plays the visible page must hold perfectly still:
+    // cancel the scroll translation with a counter-transform so the tracks
+    // stay locked to the viewport and only opacities change. At p = 1 the
+    // lock is exactly 0, so the handoff is seamless.
+    const dissolve = smooth(0.9, 1.0, p);
+    tracks.style.opacity = dissolve.toFixed(3);
+    tracks.style.visibility = dissolve <= 0.001 ? 'hidden' : 'visible';
+    const lock = p >= 0.9 ? -((1 - p) * pinRange) : 0;
+    tracks.style.transform = lock ? `translateY(${lock.toFixed(1)}px)` : '';
+  }
+
+  let ticking = false;
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      ticking = false;
+      render();
+    });
+  }
+
+  let resizeTimer = 0;
+  window.addEventListener(
+    'resize',
+    () => {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(() => {
+        buildGrid();
+        render();
+      }, 120);
+    },
+    { passive: true },
+  );
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  buildGrid();
+  render();
+}

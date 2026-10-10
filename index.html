@@ -3,196 +3,200 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#071326" />
+    <meta name="theme-color" content="#ffffff" />
     <meta
       name="description"
-      content="Acalanes Data Fest is a student-led hackathon for curious minds, real problems, and creative solutions. Details coming soon."
+      content="Acalanes Data Fest 2026 — a student-run data hackathon at Acalanes High School. Date to be announced."
     />
-    <title>Acalanes Data Fest / Hackathon</title>
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Acalanes Data Fest 2026" />
+    <meta
+      property="og:description"
+      content="Acalanes Data Fest 2026 — a student-run data hackathon at Acalanes High School. Date to be announced."
+    />
+    <title>Acalanes Data Fest 2026</title>
+    <link rel="icon" type="image/png" href="/a-logo.png" />
+    <link rel="apple-touch-icon" href="/a-logo.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css" />
-    <script src="script.js" defer></script>
+    <script type="module" src="/src/main.js"></script>
   </head>
 
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
 
-    <div class="site-shell" id="top">
-      <header class="site-header" aria-label="Site header">
-        <a class="wordmark" href="#top" aria-label="Acalanes Data Fest home">
-          <span>ACALANES</span>
-          <strong>DATA FEST</strong>
-        </a>
+    <header class="site-header">
+      <a class="wordmark" href="#pin">Acalanes Data Fest</a>
+      <a
+        class="button button-small"
+        href="https://instagram.com/aca.datasci.club"
+        target="_blank"
+        rel="noreferrer"
+      >Get updates</a>
+    </header>
 
-        <nav class="primary-nav" id="primary-nav" aria-label="Primary navigation">
-          <a href="#about">ABOUT</a>
-          <a href="#format">FORMAT</a>
-          <a href="#logistics">LOGISTICS</a>
-          <a class="nav-action" href="https://instagram.com/aca.datasci.club" target="_blank" rel="noreferrer">
-            FOLLOW UPDATES
-          </a>
-        </nav>
-
-        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
-          <span class="sr-only">Open navigation</span>
-          <span class="menu-line"></span>
-          <span class="menu-line"></span>
-        </button>
-      </header>
-
-      <main id="main-content">
-        <section class="hero section-grid" aria-labelledby="hero-title">
-          <div class="hero-copy reveal">
-            <h1 id="hero-title">DATA IS A<br /><span>TEAM SPORT.</span></h1>
-            <p>
-              Acalanes Data Fest is a student-run hackathon bringing together curious minds to turn data into ideas, and ideas into impact.
+    <div class="pin" id="pin">
+      <div class="stage" id="stage">
+        <div class="layer layer-hero" id="layerHero">
+          <main class="hero" id="main-content">
+            <p class="eyebrow">Acalanes Data Science Club</p>
+            <h1>Acalanes Data Fest <span class="h1-blue">2026</span></h1>
+            <p class="subline">
+              A student-run data hackathon where Bay Area high schoolers turn real datasets into real ideas.
             </p>
-            <a class="button button-primary" href="https://instagram.com/aca.datasci.club" target="_blank" rel="noreferrer">
-              <span>SIGNAL INTEREST</span>
-              <svg aria-hidden="true" viewBox="0 0 28 16">
-                <path d="M1 8h24M18 1l7 7-7 7" />
-              </svg>
-            </a>
-          </div>
+            <p class="meta">Student-run &middot; For Bay Area high schoolers &middot; Date to be announced</p>
+            <a
+              class="button"
+              href="https://instagram.com/aca.datasci.club"
+              target="_blank"
+              rel="noreferrer"
+            >Follow for updates</a>
 
-          <div class="hero-art reveal reveal-delay" aria-hidden="true">
-            <img src="assets/data-field.png" alt="" />
-            <div class="hero-art-label hero-art-label-top">PEOPLE<br />DATA<br />IDEAS<br />IMPACT</div>
-            <div class="crosshair crosshair-one"></div>
-            <div class="crosshair crosshair-two"></div>
-          </div>
-
-        </section>
-
-        <section class="content-section about-section" id="about" aria-labelledby="about-title">
-          <div class="section-marker reveal">
-            <span>ABOUT</span>
-            <span class="section-rule"></span>
-          </div>
-
-          <div class="about-grid">
-            <div class="section-copy reveal">
-              <h2 id="about-title">A STUDENT-LED<br />DATA HACKATHON<br />AT ACALANES.</h2>
-              <p>
-                Acalanes Data Fest brings together students who are curious about data, creativity, and real-world problem solving. Whether you’re new to data or already deep in it, this is a space to learn, build, and collaborate with peers across Acalanes.
-              </p>
+            <div class="countdown" id="countdown">
+              <p class="cd-tbd"><span class="sr-only">Event date: </span>TBD</p>
             </div>
-
-            <div class="about-diagram reveal reveal-delay">
-              <svg class="venn" viewBox="0 0 520 300" role="img" aria-labelledby="venn-title venn-desc">
-                <title id="venn-title">Curiosity and collaboration overlap</title>
-                <desc id="venn-desc">Two circles labeled curiosity and collaboration overlap at better questions.</desc>
-                <defs>
-                  <pattern id="dotPattern" width="9" height="9" patternUnits="userSpaceOnUse">
-                    <circle cx="4" cy="4" r="1.6" fill="#e8ff3f" />
-                  </pattern>
-                </defs>
-                <circle cx="205" cy="126" r="92" fill="none" stroke="currentColor" stroke-width="1.2" />
-                <circle cx="315" cy="126" r="92" fill="none" stroke="currentColor" stroke-width="1.2" />
-                <path d="M260 49a92 92 0 0 1 0 154 92 92 0 0 1 0-154Z" fill="url(#dotPattern)" opacity=".9" />
-                <text x="154" y="130">CURIOSITY</text>
-                <text x="310" y="130">COLLABORATION</text>
-                <text x="260" y="254" text-anchor="middle">BETTER QUESTIONS</text>
-                <path d="M260 20v-12M260 280v12M135 126h-12M397 126h12" />
-                <path d="M133 111l-8-8M387 143l8 8" />
-              </svg>
-              <div class="about-side-note">DIFFERENT PERSPECTIVES<br />REAL PROBLEMS<br />CREATIVE SOLUTIONS</div>
-            </div>
-          </div>
-        </section>
-
-        <section class="content-section format-section" id="format" aria-labelledby="format-title">
-          <div class="section-marker reveal">
-            <span>FORMAT</span>
-            <span class="section-rule"></span>
-            <span class="section-marker-note">FROM DATA TO IMPACT, TOGETHER.</span>
-          </div>
-
-          <div class="format-steps" id="format-title">
-            <article class="format-step reveal">
-              <span class="step-number">01</span>
-              <h2>EXPLORE</h2>
-              <p>Form a team, choose a problem, and dig into a dataset. Get curious, ask questions, and define your angle.</p>
-            </article>
-            <div class="step-arrow" aria-hidden="true"><svg viewBox="0 0 28 16"><path d="M1 8h24M18 1l7 7-7 7" /></svg></div>
-            <article class="format-step reveal reveal-delay">
-              <span class="step-number">02</span>
-              <h2>BUILD</h2>
-              <p>Turn your ideas into a working prototype. Analyze, design, and iterate with your team, with support from peers and mentors.</p>
-            </article>
-            <div class="step-arrow" aria-hidden="true"><svg viewBox="0 0 28 16"><path d="M1 8h24M18 1l7 7-7 7" /></svg></div>
-            <article class="format-step reveal reveal-delay-2">
-              <span class="step-number">03</span>
-              <h2>SHARE</h2>
-              <p>Present your project, demo what you built, and share your insights with the Acalanes community.</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="content-section logistics-section" id="logistics" aria-labelledby="logistics-title">
-          <div class="section-marker reveal">
-            <span id="logistics-title">LOGISTICS</span>
-            <span class="section-rule"></span>
-            <span class="section-marker-note">DETAILS COMING SOON.</span>
-          </div>
-
-          <div class="logistics-grid">
-            <article class="logistics-item reveal">
-              <svg aria-hidden="true" viewBox="0 0 42 42">
-                <rect x="6" y="8" width="30" height="29" rx="1" />
-                <path d="M12 4v9M30 4v9M6 17h30" />
-              </svg>
-              <span class="logistics-label">DATE</span>
-              <strong>TBD</strong>
-            </article>
-            <article class="logistics-item reveal reveal-delay">
-              <svg aria-hidden="true" viewBox="0 0 42 42">
-                <path d="M21 38s12-12.2 12-21A12 12 0 0 0 9 17c0 8.8 12 21 12 21Z" />
-                <circle cx="21" cy="17" r="3.5" />
-              </svg>
-              <span class="logistics-label">LOCATION</span>
-              <strong>TBD</strong>
-            </article>
-            <article class="logistics-item reveal reveal-delay-2">
-              <svg aria-hidden="true" viewBox="0 0 42 42">
-                <path d="M9 5h19l6 6v26H9zM28 5v7h6M15 20h13M15 27h13" />
-              </svg>
-              <span class="logistics-label">REGISTRATION</span>
-              <strong>TBD</strong>
-            </article>
-          </div>
-        </section>
-      </main>
-
-      <footer class="site-footer" id="updates">
-        <div class="footer-brand reveal">
-          <a class="wordmark" href="#top" aria-label="Back to top">
-            <span>ACALANES</span>
-            <strong>DATA FEST</strong>
-          </a>
-          <p>Acalanes students. Real data. A more curious tomorrow.</p>
+          </main>
         </div>
 
-        <div class="footer-updates reveal reveal-delay">
-          <span class="footer-label">QUESTIONS / UPDATES</span>
-          <a href="https://instagram.com/aca.datasci.club" target="_blank" rel="noreferrer">
-            <svg aria-hidden="true" viewBox="0 0 32 32">
-              <rect x="4" y="4" width="24" height="24" rx="7" />
-              <circle cx="16" cy="16" r="5.5" />
-              <circle cx="23" cy="9" r="1.25" class="instagram-dot" />
+        <canvas class="layer layer-squares" id="squares" aria-hidden="true"></canvas>
+
+        <div class="layer layer-text1" id="layerText1" aria-hidden="true">
+          <p>The Bay Area has always been the center of technology.</p>
+        </div>
+
+        <div class="layer layer-holo" id="layerHolo" aria-hidden="true">
+          <div class="holo-grid" aria-hidden="true"></div>
+          <div class="holo-tilt" aria-hidden="true">
+            <svg class="holo-svg" viewBox="0 0 400 600" role="img" aria-label="California state hologram">
+              <defs>
+                <clipPath id="ca-clip">
+                  <path d="M7.7,71.3L171.7,71.5L171.7,216.2L273.8,306.7L380.6,409.5L380.4,415.6L386.9,423.4L390.2,435.7L398.3,441.0L400.0,445.3L388.3,453.6L388.3,456.5L384.4,461.3L385.9,472.5L384.8,479.5L379.6,486.2L376.9,486.6L378.1,488.7L376.8,491.4L378.9,493.1L377.6,501.8L379.6,504.6L385.1,504.8L387.1,510.4L384.8,518.0L283.6,528.7L281.9,522.1L278.9,522.2L277.5,514.8L278.7,512.3L275.7,500.3L268.8,490.1L246.0,470.9L242.7,469.3L239.5,472.2L233.5,470.3L234.3,465.6L228.4,456.0L218.2,457.8L205.5,453.0L202.2,450.8L199.8,445.0L188.9,437.9L176.6,438.1L166.1,435.0L153.3,436.2L151.3,432.2L147.4,431.1L148.0,416.4L145.6,414.2L147.0,403.6L138.3,399.5L136.8,397.5L138.2,392.1L136.4,387.8L132.6,387.3L126.3,378.8L122.9,377.8L114.7,366.7L113.2,361.2L98.6,347.2L96.4,334.1L94.9,333.5L96.3,330.4L98.8,332.0L101.0,328.2L102.1,322.4L99.2,316.2L96.1,313.9L89.7,315.0L78.1,303.4L78.2,295.5L73.8,287.7L73.8,275.2L78.0,273.7L79.8,284.2L92.1,290.8L89.6,288.4L87.2,280.2L80.9,275.0L81.2,269.1L77.1,266.3L83.5,262.4L82.2,259.5L78.5,257.6L74.7,259.1L74.3,263.0L76.4,265.1L74.2,268.0L76.8,270.3L74.3,269.7L75.3,272.6L73.2,273.3L59.5,263.3L54.5,264.4L56.9,257.1L56.2,252.4L52.4,249.9L49.9,242.8L42.1,237.2L26.1,218.4L27.9,213.5L22.8,198.8L25.0,189.2L21.8,176.0L12.9,166.5L11.7,162.9L1.8,155.3L0.0,146.7L11.6,118.2L9.8,112.6L13.6,98.3L9.6,83.8L6.0,81.7L7.7,71.3Z" />
+                </clipPath>
+                <linearGradient id="scan-grad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#cfe4ff" stop-opacity="0" />
+                  <stop offset="0.5" stop-color="#cfe4ff" stop-opacity="0.55" />
+                  <stop offset="1" stop-color="#cfe4ff" stop-opacity="0" />
+                </linearGradient>
+                <pattern id="holo-lines" width="400" height="14" patternUnits="userSpaceOnUse">
+                  <rect width="400" height="1.5" y="0" fill="#9cc4f5" opacity="0.35" />
+                </pattern>
+              </defs>
+              <g clip-path="url(#ca-clip)">
+                <rect x="0" y="0" width="400" height="600" fill="url(#holo-lines)" />
+                <rect class="scan-beam" x="0" y="-70" width="400" height="70" fill="url(#scan-grad)" />
+              </g>
+              <path class="ca-outline" d="M7.7,71.3L171.7,71.5L171.7,216.2L273.8,306.7L380.6,409.5L380.4,415.6L386.9,423.4L390.2,435.7L398.3,441.0L400.0,445.3L388.3,453.6L388.3,456.5L384.4,461.3L385.9,472.5L384.8,479.5L379.6,486.2L376.9,486.6L378.1,488.7L376.8,491.4L378.9,493.1L377.6,501.8L379.6,504.6L385.1,504.8L387.1,510.4L384.8,518.0L283.6,528.7L281.9,522.1L278.9,522.2L277.5,514.8L278.7,512.3L275.7,500.3L268.8,490.1L246.0,470.9L242.7,469.3L239.5,472.2L233.5,470.3L234.3,465.6L228.4,456.0L218.2,457.8L205.5,453.0L202.2,450.8L199.8,445.0L188.9,437.9L176.6,438.1L166.1,435.0L153.3,436.2L151.3,432.2L147.4,431.1L148.0,416.4L145.6,414.2L147.0,403.6L138.3,399.5L136.8,397.5L138.2,392.1L136.4,387.8L132.6,387.3L126.3,378.8L122.9,377.8L114.7,366.7L113.2,361.2L98.6,347.2L96.4,334.1L94.9,333.5L96.3,330.4L98.8,332.0L101.0,328.2L102.1,322.4L99.2,316.2L96.1,313.9L89.7,315.0L78.1,303.4L78.2,295.5L73.8,287.7L73.8,275.2L78.0,273.7L79.8,284.2L92.1,290.8L89.6,288.4L87.2,280.2L80.9,275.0L81.2,269.1L77.1,266.3L83.5,262.4L82.2,259.5L78.5,257.6L74.7,259.1L74.3,263.0L76.4,265.1L74.2,268.0L76.8,270.3L74.3,269.7L75.3,272.6L73.2,273.3L59.5,263.3L54.5,264.4L56.9,257.1L56.2,252.4L52.4,249.9L49.9,242.8L42.1,237.2L26.1,218.4L27.9,213.5L22.8,198.8L25.0,189.2L21.8,176.0L12.9,166.5L11.7,162.9L1.8,155.3L0.0,146.7L11.6,118.2L9.8,112.6L13.6,98.3L9.6,83.8L6.0,81.7L7.7,71.3Z" />
             </svg>
-            <span>@aca.datasci.club</span>
-          </a>
+          </div>
         </div>
 
-        <div class="footer-note" aria-hidden="true">SAME<br />STUDENTS<br />BRIGHTER<br />QUESTIONS<span class="plus-mark">+</span></div>
-      </footer>
+        <div class="layer layer-final" id="layerFinal">
+          <img class="final-logo" src="a-logo.png" alt="" aria-hidden="true" draggable="false" />
+          <p>Acalanes Data Fest gathers <span class="final-blue">California&rsquo;s brightest</span> young innovators in one place.</p>
+        </div>
+      </div>
     </div>
+
+    <section class="tracks" aria-labelledby="tracks-heading">
+      <h2 id="tracks-heading">Tracks</h2>
+      <div class="track-grid">
+        <article class="track-card">
+          <div class="track-art">
+            <span class="track-art-fallback" aria-hidden="true">1st</span>
+            <canvas class="track-canvas" data-track="overall" aria-hidden="true"></canvas>
+          </div>
+          <h3>Best Overall</h3>
+          <p class="track-sub">1st &middot; 2nd &middot; 3rd</p>
+        </article>
+        <article class="track-card">
+          <div class="track-art">
+            <span class="track-art-fallback" aria-hidden="true">+</span>
+            <canvas class="track-canvas" data-track="impact" aria-hidden="true"></canvas>
+          </div>
+          <h3>Most Impactful</h3>
+        </article>
+        <article class="track-card">
+          <div class="track-art">
+            <span class="track-art-fallback" aria-hidden="true">$</span>
+            <canvas class="track-canvas" data-track="finance" aria-hidden="true"></canvas>
+          </div>
+          <h3>Best Finance</h3>
+        </article>
+      </div>
+    </section>
+
+    <section class="faq" aria-labelledby="faq-heading">
+      <h2 id="faq-heading">Questions</h2>
+      <div class="faq-list">
+        <details>
+          <summary>Who can take part?</summary>
+          <div class="faq-answer"><div class="faq-answer-inner"><p>Acalanes Data Fest is for Bay Area high schoolers. If you&rsquo;re in high school in the Bay Area, you&rsquo;re in.</p></div></div>
+        </details>
+        <details>
+          <summary>Do I need experience with data?</summary>
+          <div class="faq-answer"><div class="faq-answer-inner"><p>No. Beginners are welcome &mdash; curiosity matters more than experience, and mentors and peers will be around to help.</p></div></div>
+        </details>
+        <details>
+          <summary>How do teams work?</summary>
+          <div class="faq-answer"><div class="faq-answer-inner"><p>Come with a team or find one when you arrive. Teams form around the questions people want to explore.</p></div></div>
+        </details>
+        <details>
+          <summary>How much does it cost?</summary>
+          <div class="faq-answer"><div class="faq-answer-inner"><p>Nothing. It&rsquo;s completely free.</p></div></div>
+        </details>
+        <details>
+          <summary>When does registration open?</summary>
+          <div class="faq-answer"><div class="faq-answer-inner"><p>Not yet &mdash; the date and details are still being confirmed. Follow
+            <a href="https://instagram.com/aca.datasci.club" target="_blank" rel="noreferrer">@aca.datasci.club</a>
+            on Instagram and you&rsquo;ll hear it first.</p></div></div>
+        </details>
+      </div>
+    </section>
+
+    <section class="sponsors" aria-labelledby="sponsors-heading">
+      <h2 id="sponsors-heading">Sponsors</h2>
+      <p class="sr-only">Sponsor logos to be announced.</p>
+      <div class="tier tier-gold">
+        <p class="tier-label">Gold</p>
+        <div class="tier-row" aria-hidden="true">
+          <div class="slot"></div>
+          <div class="slot"></div>
+        </div>
+      </div>
+      <div class="tier tier-silver">
+        <p class="tier-label">Silver</p>
+        <div class="tier-row" aria-hidden="true">
+          <div class="slot"></div>
+          <div class="slot"></div>
+          <div class="slot"></div>
+          <div class="slot"></div>
+        </div>
+      </div>
+      <div class="tier tier-bronze">
+        <p class="tier-label">Bronze</p>
+        <div class="tier-row" aria-hidden="true">
+          <div class="slot"></div>
+          <div class="slot"></div>
+          <div class="slot"></div>
+          <div class="slot"></div>
+          <div class="slot"></div>
+          <div class="slot"></div>
+          <div class="slot"></div>
+          <div class="slot"></div>
+          <div class="slot"></div>
+          <div class="slot"></div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <p>&copy; 2026 Acalanes Data Science Club &middot;
+        <a href="https://instagram.com/aca.datasci.club" target="_blank" rel="noreferrer">@aca.datasci.club</a>
+      </p>
+    </footer>
   </body>
 </html>
