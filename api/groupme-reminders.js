@@ -3,17 +3,17 @@ import { timingSafeEqual } from "node:crypto";
 const TIME_ZONE = "America/Los_Angeles";
 
 const REMINDERS = new Map([
-  ["Thu 18", {
+  ["Thu 17", {
     id: "thursday-evening",
-    text: "You're invited! Acalanes Data Science Club meets tomorrow at lunch in Room 105. Come join us—we'd love to see you there!",
+    text: "Come join Acalanes Data Science Club tomorrow at lunch in Room 105! We'd love to see you there!",
   }],
-  ["Fri 08", {
+  ["Fri 07", {
     id: "friday-morning",
-    text: "Happy Friday! Join Acalanes Data Science Club at lunch today in Room 105. Bring a friend—we'd love to have you!",
+    text: "Happy Friday! Acalanes Data Science Club meets today at lunch in Room 105. We'd love to see you there!",
   }],
-  ["Fri 12", {
+  ["Fri 11", {
     id: "friday-meeting",
-    text: "It's club day! Acalanes Data Science Club meets at lunch in Room 105—come join us!",
+    text: "Reminder: Acalanes Data Science Club meets today at lunch in Room 105. Come join us—we'd love to see you!",
   }],
 ]);
 

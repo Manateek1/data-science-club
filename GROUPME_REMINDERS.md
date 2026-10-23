@@ -1,19 +1,18 @@
 # GroupMe meeting reminders
 
-The Vercel project can post three reminders to the club's GroupMe group:
+The Vercel project posts three reminders to the club's GroupMe group:
 
-- Thursday at 6:00 PM: a friendly invitation for the next day's lunch meeting.
-- Friday at 8:00 AM: a same-day reminder for the lunch meeting.
-- Friday at 12:50 PM: a final lunch-time invitation to meet in Room 105.
+- Thursday from 5:00 to 5:59 PM: an invitation for Friday's lunch meeting.
+- Friday from 7:00 to 7:59 AM: a same-day reminder for the lunch meeting.
+- Friday from 11:00 to 11:59 AM: a final reminder to meet at lunch in Room 105.
 
 All times use `America/Los_Angeles`. Vercel Cron schedules use UTC, so
-`vercel.json` includes both Pacific daylight-time and standard-time UTC slots
-for each reminder. The function matches the current Pacific weekday and hour.
-On Vercel Pro, cron runs at the configured minute (including 12:50 PM). On
-the current Hobby plan, Vercel has hour-level timing precision, so the
-function accepts the matching hour to avoid skipping a reminder when the cron
-invocation shifts within that hour. This avoids changing the schedule when
-daylight saving time changes.
+`vercel.json` includes both daylight-time and standard-time UTC slots for each
+reminder. The function matches the current Pacific weekday and hour. The cron
+slots are one Pacific hour before the original reminder times, so Hobby's
+hour-level scheduling variation cannot make a reminder arrive late. The
+Friday lunch reminder will post before noon, up to 1 hour 50 minutes before
+12:50 PM. The UTC slots account for daylight saving time changes.
 
 ## Required Vercel settings
 
@@ -35,13 +34,12 @@ repository or send them in chat.
 ## Timing and operation
 
 The current Vercel team uses Hobby, whose cron timing has hour-level precision
-(up to 59 minutes of variation). The reminders will post during the matching
-Pacific hour, but may not arrive exactly at 6:00 PM, 8:00 AM, or 12:50 PM.
-Per-minute timing requires Vercel Pro. Cron schedules run only on production
-deployments, so a preview deployment will not post messages. If a production
-invocation is missed or GroupMe rejects a post, check the Vercel function
-logs; this small implementation does not keep a queue or retry missed
-reminders.
+(up to 59 minutes of variation). Messages will arrive during the early windows
+above, rather than at an exact minute. Per-minute timing requires Vercel Pro.
+Cron schedules run only on production deployments, so a preview deployment
+will not post messages. If a production invocation is missed or GroupMe rejects
+a post, check the Vercel function logs; this small implementation does not keep
+a queue or retry missed reminders.
 
 The endpoint also requires Vercel's Cron authorization header, accepts only
 GET requests, sends the bot ID in the HTTPS request body, and never logs that
