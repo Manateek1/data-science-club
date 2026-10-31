@@ -34,11 +34,11 @@ form.addEventListener('submit', async (event) => {
     });
     if (!response.ok) throw new Error('Submission rejected');
     form.hidden = true;
-    status.textContent = 'Thank you! Your application has been received. The organizing team will follow up by email.';
+    status.textContent = 'Application received. We’ll follow up by email.';
     status.tabIndex = -1;
     status.focus();
   } catch {
-    status.textContent = 'We couldn’t confirm your submission. Please try again in a moment. Your answers are still here.';
+    status.textContent = 'We couldn’t confirm your submission. Your answers are still in the form. Please try again.';
     button.disabled = false;
     button.textContent = 'Submit application';
   } finally {
