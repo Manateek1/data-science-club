@@ -1,5 +1,9 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [
+    { "source": "/judge", "destination": "/judge.html" },
+    { "source": "/judge/", "destination": "/judge.html" }
+  ],
   "crons": [
     { "path": "/api/groupme-reminders", "schedule": "0 0 * * 5" },
     { "path": "/api/groupme-reminders", "schedule": "0 1 * * 5" },
