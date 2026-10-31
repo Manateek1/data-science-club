@@ -638,5 +638,9 @@ h1 {
   color: var(--muted);
 }
 
-.judge-nav-link { color: var(--blue); font-size: 0.85rem; font-weight: 500; text-underline-offset: 4px; white-space: nowrap; }
-@media (max-width: 380px) { .site-header { padding-left: 12px; gap: 8px; } .nav-actions { gap: 8px; } .nav-actions .button-small { padding-inline: 14px; } }
+.site-header .button { white-space: nowrap; }
+@media (max-width: 380px) {
+  .site-header { padding-left: 12px; gap: 8px; }
+  .nav-actions { gap: 8px; }
+  .nav-actions .button-small { padding-inline: 12px; font-size: 0.8rem; }
+}
