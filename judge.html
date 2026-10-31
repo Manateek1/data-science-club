@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Apply to be a judge | Acalanes Data Fest 2026</title>
+    <meta name="description" content="Help Bay Area high schoolers turn data into ideas. Apply to judge Acalanes Data Fest on November 21, 2026, in Oakland." />
+    <link rel="canonical" href="https://ahsdata.com/judge" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <script type="module" src="/src/judge.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="site-header">
+      <a class="wordmark" href="/" aria-label="Acalanes Data Fest home"><img src="/a-logo.png" alt="Acalanes Data Fest" class="wordmark-icon" /></a>
+      <a class="judge-back" href="/">Back to the event &rarr;</a>
+    </header>
+    <main class="judge-main" id="main-content">
+      <div class="judge-intro">
+        <p class="eyebrow">Acalanes Data Fest 2026</p>
+        <h1>Help shape the<br /><span class="h1-blue">next big idea.</span></h1>
+        <p class="judge-lead">Apply to be a judge.</p>
+        <p>Share your perspective, celebrate creative thinking, and help Bay Area high schoolers grow through data.</p>
+        <p class="judge-event">November 21, 2026 &middot; Oakland<br />Hosted by BRIDGEGOOD &middot; Event hours: 9 AM–5 PM</p>
+      </div>
+      <section class="judge-panel" aria-labelledby="application-heading">
+        <h2 id="application-heading">Judge application</h2>
+        <p id="form-intro">Tell us a little about yourself. All fields are required unless marked optional. The organizing team will follow up by email about your application and judging details.</p>
+        <p id="form-status" class="form-status" role="status" aria-live="polite">Applications are temporarily unavailable. Please check back soon.</p>
+        <noscript><p>Please enable JavaScript to submit your application.</p></noscript>
+        <form id="judge-form" aria-describedby="form-intro form-status">
+          <fieldset id="application-fields" disabled>
+            <legend class="sr-only">Your application details</legend>
+            <div class="judge-fields">
+              <div class="judge-field"><label for="name">Full name</label><input id="name" name="name" autocomplete="name" maxlength="120" required /></div>
+              <div class="judge-field"><label for="email">Email address</label><input id="email" name="email" type="email" autocomplete="email" maxlength="254" required /></div>
+              <div class="judge-field"><label for="organization">Organization or school <span>(optional)</span></label><input id="organization" name="organization" autocomplete="organization" maxlength="160" /></div>
+              <div class="judge-field"><label for="role">Current role <span>(optional)</span></label><input id="role" name="role" autocomplete="organization-title" maxlength="160" /></div>
+              <div class="judge-field judge-field-wide"><label for="profile">LinkedIn or website <span>(optional)</span></label><input id="profile" name="profile" type="url" placeholder="https://" maxlength="500" /></div>
+              <div class="judge-field judge-field-wide"><label for="experience">Your background and interests</label><p id="experience-help">Tell us about your experience with data, technology, design, business, or mentoring, and why you’d like to judge.</p><textarea id="experience" name="experience" rows="5" maxlength="3000" aria-describedby="experience-help" required></textarea></div>
+              <div class="judge-field judge-field-wide"><label for="availability">Availability on November 21</label><select id="availability" name="availability" required><option value="">Select your availability</option><option>Available in person in Oakland</option><option>Interested, but need to confirm availability</option><option>Only available remotely</option></select><p>Judging times will be shared by the organizing team.</p></div>
+              <div class="judge-field judge-field-wide"><label for="notes">Anything else? <span>(optional)</span></label><textarea id="notes" name="notes" rows="3" maxlength="2000"></textarea></div>
+            </div>
+            <div class="judge-trap" aria-hidden="true"><label for="website-check">Leave this field empty</label><input id="website-check" name="_gotcha" tabindex="-1" autocomplete="off" /></div>
+            <input type="hidden" name="_subject" value="New Acalanes Data Fest judge application" />
+            <label class="judge-consent"><input type="checkbox" name="contact_consent" value="yes" required /><span>I agree that Acalanes Data Science Club may use these details to review my application and contact me about judging. Submissions are processed by <a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noreferrer">Formspree</a>.</span></label>
+            <button class="button" id="submit-application" type="submit">Submit application</button>
+          </fieldset>
+        </form>
+      </section>
+    </main>
+    <footer class="site-footer"><p>&copy; 2026 Acalanes Data Science Club &middot; <a href="/">Acalanes Data Fest</a></p></footer>
+  </body>
+</html>
