@@ -44,8 +44,8 @@ email delivery must be completed by the organizer; code alone cannot enable them
 
 - If the configured endpoint is empty or invalid, the form shows an unavailable notice and
   stays disabled rather than claiming to accept applications.
-- The form collects name, email, optional organization/role/profile, background,
-  availability, optional notes, and consent to application-related contact.
+- The form collects name, email, an optional LinkedIn/website URL, relevant
+  experience, availability, and consent to judging-related contact.
 - Browser validation checks required fields, email, URL, and consent. A honeypot
   is included for Formspree spam filtering; provider spam protection should also
   remain enabled. No file uploads or custom backend are needed.
