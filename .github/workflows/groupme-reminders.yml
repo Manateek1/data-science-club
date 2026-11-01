@@ -1,0 +1,79 @@
+name: GroupMe reminders
+
+on:
+  schedule:
+    - cron: "7 17 * * 4"
+      timezone: "America/Los_Angeles"
+    - cron: "17 7 * * 5"
+      timezone: "America/Los_Angeles"
+    - cron: "23 11 * * 5"
+      timezone: "America/Los_Angeles"
+  workflow_dispatch:
+    inputs:
+      test:
+        description: "Send one fixed test message to the club's GroupMe"
+        required: false
+        default: false
+        type: boolean
+
+permissions: {}
+
+jobs:
+  send-reminder:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Call the production reminder function
+        env:
+          REMINDER_SECRET: ${{ secrets.GROUPME_REMINDER_SECRET }}
+          EVENT_NAME: ${{ github.event_name }}
+          SCHEDULE_EXPRESSION: ${{ github.event.schedule }}
+          SEND_TEST: ${{ inputs.test || false }}
+          REMINDER_ENDPOINT: https://acalanes-data-science-club-git-main-dillon-nagars-projects.vercel.app/api/groupme-reminders
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [[ -z "$REMINDER_SECRET" ]]; then
+            echo "::error::Missing GROUPME_REMINDER_SECRET repository secret."
+            exit 1
+          fi
+
+          if [[ "$EVENT_NAME" == "workflow_dispatch" ]]; then
+            if [[ "$SEND_TEST" != "true" ]]; then
+              echo "::error::Set the test input to true to run a manual check."
+              exit 1
+            fi
+            request_url="$REMINDER_ENDPOINT?test=1"
+          else
+            case "$SCHEDULE_EXPRESSION" in
+              "7 17 * * 4") reminder_id="thursday-evening" ;;
+              "17 7 * * 5") reminder_id="friday-morning" ;;
+              "23 11 * * 5") reminder_id="friday-meeting" ;;
+              *)
+                echo "::error::Unrecognized schedule expression."
+                exit 1
+                ;;
+            esac
+            request_url="$REMINDER_ENDPOINT?reminder=$reminder_id"
+          fi
+
+          response_file="$(mktemp)"
+          trap 'rm -f "$response_file"' EXIT
+          status="$(curl \
+            --silent \
+            --show-error \
+            --connect-timeout 10 \
+            --max-time 30 \
+            --output "$response_file" \
+            --write-out '%{http_code}' \
+            --header "Authorization: Bearer $REMINDER_SECRET" \
+            "$request_url")"
+
+          if [[ "$status" != "200" ]]; then
+            echo "::error::Reminder endpoint returned HTTP $status."
+            cat "$response_file"
+            exit 1
+          fi
+
+          cat "$response_file"

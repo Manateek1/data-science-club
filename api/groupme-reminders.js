@@ -17,6 +17,15 @@ const REMINDERS = new Map([
   }],
 ]);
 
+const REMINDERS_BY_ID = new Map(
+  [...REMINDERS.values()].map((reminder) => [reminder.id, reminder]),
+);
+
+const TEST_REMINDER = {
+  id: "groupme-test",
+  text: "Reminder bot test—please ignore",
+};
+
 function getLocalHour(date) {
   const parts = new Intl.DateTimeFormat("en-US", {
     timeZone: TIME_ZONE,
@@ -42,11 +51,34 @@ export default async function handler(request, response) {
     return response.status(405).json({ error: "Method not allowed." });
   }
 
-  if (!hasValidCronSecret(request.headers.authorization, process.env.CRON_SECRET)) {
+  if (!hasValidCronSecret(
+    request.headers.authorization,
+    process.env.GROUPME_REMINDER_SECRET,
+  )) {
     return response.status(401).json({ error: "Unauthorized." });
   }
 
-  const reminder = REMINDERS.get(getLocalHour(new Date()));
+  const requestUrl = new URL(request.url ?? "/", "https://groupme-reminders.invalid");
+  const hasTestParameter = requestUrl.searchParams.has("test");
+  const testMode = requestUrl.searchParams.get("test") === "1";
+  const requestedReminderId = requestUrl.searchParams.get("reminder");
+
+  if (hasTestParameter && (!testMode || requestedReminderId)) {
+    return response.status(400).json({ error: "Invalid reminder request." });
+  }
+
+  let reminder;
+  if (testMode) {
+    reminder = TEST_REMINDER;
+  } else if (requestedReminderId) {
+    reminder = REMINDERS_BY_ID.get(requestedReminderId);
+    if (!reminder) {
+      return response.status(400).json({ error: "Unknown reminder." });
+    }
+  } else {
+    reminder = REMINDERS.get(getLocalHour(new Date()));
+  }
+
   if (!reminder) {
     return response.status(204).end();
   }

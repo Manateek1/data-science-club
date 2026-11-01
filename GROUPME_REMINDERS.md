@@ -1,29 +1,27 @@
 # GroupMe meeting reminders
 
-The Vercel project posts three reminders to the club's GroupMe group:
+The club receives three reminders through a GitHub Actions schedule:
 
-- Thursday from 5:00 to 5:59 PM: an invitation for Friday's lunch meeting.
-- Friday from 7:00 to 7:59 AM: a same-day reminder for the lunch meeting.
-- Friday from 11:00 to 11:59 AM: a final reminder to meet at lunch in Room 105.
+- Thursday at 5:07 PM: an invitation for Friday's lunch meeting.
+- Friday at 7:17 AM: a same-day reminder for the lunch meeting.
+- Friday at 11:23 AM: a final reminder to meet at lunch in Room 105.
 
-All times use `America/Los_Angeles`. Vercel Cron schedules use UTC, so
-`vercel.json` includes both daylight-time and standard-time UTC slots for each
-reminder. The function matches the current Pacific weekday and hour. The cron
-slots are one Pacific hour before the original reminder times, so Hobby's
-hour-level scheduling variation cannot make a reminder arrive late. The
-Friday lunch reminder will post before noon, up to 1 hour 50 minutes before
-12:50 PM. The UTC slots account for daylight saving time changes.
+All times use America/Los_Angeles, including daylight saving time. GitHub
+Actions calls the production Vercel function with the reminder ID for that
+schedule, so a delayed workflow still sends the correct reminder instead of
+silently skipping it based on the current hour. The schedule uses minutes away
+from the top of the hour to reduce GitHub Actions queue delays.
 
 ## Required Vercel settings
 
 Add these as **Production** environment variables in the existing
 `acalanes-data-science-club` Vercel project:
 
-- `GROUPME_BOT_ID`: the bot ID returned when the bot is created. Treat it as a
+- GROUPME_BOT_ID: the bot ID returned when the bot is created. Treat it as a
   secret because it can post to the group.
-- `CRON_SECRET`: a separate, randomly generated secret with at least 32 bytes
-  of entropy. Vercel sends it to the function as a Bearer authorization value
-  for Cron requests.
+- GROUPME_REMINDER_SECRET: a randomly generated secret with at least 32 bytes
+  of entropy. Store the same value as a Production environment variable in
+  Vercel and as a repository Actions secret in GitHub.
 
 Create the bot from GroupMe's [Bots page](https://dev.groupme.com/bots), choose
 the club's GroupMe group, and copy the returned bot ID into Vercel. The
@@ -33,14 +31,11 @@ repository or send them in chat.
 
 ## Timing and operation
 
-The current Vercel team uses Hobby, whose cron timing has hour-level precision
-(up to 59 minutes of variation). Messages will arrive during the early windows
-above, rather than at an exact minute. Per-minute timing requires Vercel Pro.
-Cron schedules run only on production deployments, so a preview deployment
-will not post messages. If a production invocation is missed or GroupMe rejects
-a post, check the Vercel function logs; this small implementation does not keep
-a queue or retry missed reminders.
+The workflow is in .github/workflows/groupme-reminders.yml and runs on the
+repository's default branch. Its manual Run workflow option can send one fixed
+test message to verify GroupMe delivery. Scheduled workflow failures are
+visible in the GitHub Actions run logs. The reminder function remains hosted
+by Vercel.
 
-The endpoint also requires Vercel's Cron authorization header, accepts only
-GET requests, sends the bot ID in the HTTPS request body, and never logs that
-ID or the authorization value.
+The endpoint accepts only GET requests, requires the shared Bearer secret,
+sends the bot ID in the HTTPS request body, and never logs either secret.
