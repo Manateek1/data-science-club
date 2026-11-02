@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 import { fileURLToPath } from 'node:url';
 
-// Both public pages are served from the domain root, including /judge.
+// Public pages are served from the domain root.
 export default defineConfig({
   base: '/',
   build: {
@@ -9,6 +9,7 @@ export default defineConfig({
       input: {
         main: fileURLToPath(new URL('./index.html', import.meta.url)),
         judge: fileURLToPath(new URL('./judge.html', import.meta.url)),
+        sponsor: fileURLToPath(new URL('./sponsor.html', import.meta.url)),
       },
     },
   },
