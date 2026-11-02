@@ -20,6 +20,13 @@
 .sponsor-benefits { border-left: 3px solid var(--blue); padding-left: 20px; }
 .sponsor-benefits ul { margin: 0; padding-left: 20px; }
 .sponsor-benefits li + li { margin-top: 10px; }
+.sponsor-levels-intro { max-width: 68ch; }
+.sponsor-tier-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 16px; }
+.sponsor-tier { min-width: 0; padding: 16px 18px; border: 1px solid #dedede; border-radius: 12px; background: #fff; }
+.sponsor-tier h3 { margin: 0 0 4px; font-size: .92rem; font-weight: 600; }
+.sponsor-tier .tier-amount { margin: 0; color: var(--blue); font-size: 1.45rem; font-weight: 700; letter-spacing: -.025em; }
+.sponsor-tier-kind { grid-column: 1 / -1; }
+.sponsor-levels-note { margin-top: 12px !important; color: var(--muted); font-size: .9rem; }
 .sponsor-contact { border-top: 1px solid #dedede; padding-top: 24px; scroll-margin-top: 24px; }
 .contact-email { font-weight: 600; overflow-wrap: anywhere; }
 .sponsor-footer { display: flex; justify-content: space-between; gap: 16px; border-top: 1px solid #dedede; margin-top: 32px; padding: 20px 0 32px; font-size: .8rem; }
@@ -31,26 +38,36 @@
   .host-brand img { width: 118px; }
   .sponsor-intro { padding-top: 28px; }
   .sponsor-facts { grid-template-columns: 1fr; gap: 16px; }
+  .sponsor-tier-grid { grid-template-columns: 1fr; }
+  .sponsor-tier-kind { grid-column: auto; }
 }
-@page { size: A4; margin: 15mm 18mm; }
+@page { size: A4; margin: 10mm 14mm; }
 @media print {
   * { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
-  .sponsor-page { font-family: Arial, Helvetica, sans-serif; font-size: 10.5pt; line-height: 1.45; }
+  .sponsor-page { font-family: Arial, Helvetica, sans-serif; font-size: 9pt; line-height: 1.28; }
   .sponsor-document { width: 100%; }
   .skip-link, .pdf-download, .back-link { display: none; }
-  .sponsor-brands { padding: 0 0 5mm; }
-  .club-brand img { width: 10mm; height: 12mm; }
-  .host-brand span { font-size: 8pt; }
-  .host-brand img { width: 38mm; }
-  .sponsor-intro { padding-top: 6mm; }
-  .sponsor-page h1 { font-size: 26pt; margin-bottom: 4mm; }
-  .sponsor-page h2 { font-size: 13pt; margin-bottom: 2mm; }
-  .sponsor-page p { margin-bottom: 2.5mm; }
-  .sponsor-facts { grid-template-columns: 1fr 1fr; margin-top: 5mm; padding: 4mm 0; gap: 6mm; }
-  .sponsor-facts dt { font-size: 9pt; margin-bottom: 1mm; }
-  .sponsor-page section { margin-top: 5mm; break-inside: avoid; }
-  .sponsor-benefits { padding-left: 4mm; }
-  .sponsor-benefits li + li { margin-top: 2mm; }
-  .sponsor-contact { padding-top: 4mm; }
-  .sponsor-footer { padding: 3mm 0 0; margin-top: 5mm; font-size: 9pt; }
+  .sponsor-brands { padding: 0 0 3mm; }
+  .club-brand img { width: 8mm; height: 10mm; }
+  .host-brand span { font-size: 7.5pt; }
+  .host-brand img { width: 33mm; }
+  .sponsor-intro { padding-top: 3.5mm; }
+  .sponsor-page h1 { font-size: 22pt; margin-bottom: 2mm; }
+  .sponsor-page h2 { font-size: 11.5pt; margin-bottom: 1mm; }
+  .sponsor-page p { margin-bottom: 1.5mm; }
+  .sponsor-facts { grid-template-columns: 1fr 1fr; margin-top: 3mm; padding: 2.5mm 0; gap: 5mm; }
+  .sponsor-facts dt { font-size: 8pt; margin-bottom: .5mm; }
+  .sponsor-page section { margin-top: 3mm; break-inside: avoid; }
+  .sponsor-benefits { padding-left: 3mm; }
+  .sponsor-benefits ul { padding-left: 4mm; }
+  .sponsor-benefits li + li { margin-top: 1mm; }
+  .sponsor-tier-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2mm; margin-top: 1.5mm; }
+  .sponsor-tier { padding: 2mm; border-radius: 1.5mm; }
+  .sponsor-tier h3 { font-size: 8pt; margin-bottom: .5mm; }
+  .sponsor-tier .tier-amount { font-size: 12pt; }
+  .sponsor-tier-kind { grid-column: 1 / -1; }
+  .sponsor-tier-kind p { margin-bottom: 0; }
+  .sponsor-levels-note { margin-top: 1mm !important; font-size: 8pt; }
+  .sponsor-contact { padding-top: 2.5mm; }
+  .sponsor-footer { padding: 2mm 0 0; margin-top: 3mm; font-size: 8pt; }
 }
