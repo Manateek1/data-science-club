@@ -1,7 +1,21 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "rewrites": [
-    { "source": "/judge", "destination": "/judge.html" },
-    { "source": "/judge/", "destination": "/judge.html" }
+    {
+      "source": "/judge",
+      "destination": "/judge.html"
+    },
+    {
+      "source": "/judge/",
+      "destination": "/judge.html"
+    },
+    {
+      "source": "/sponsor",
+      "destination": "/sponsor.html"
+    },
+    {
+      "source": "/sponsor/",
+      "destination": "/sponsor.html"
+    }
   ]
 }
