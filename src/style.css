@@ -470,49 +470,9 @@ h1 {
   letter-spacing: -0.01em;
 }
 
-.tier {
-  margin: 0 0 40px;
-}
-
-.tier:last-child {
-  margin-bottom: 0;
-}
-
-.tier-label {
-  margin: 0 0 16px;
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
+.sponsors-status {
+  margin: 0 0 24px;
   color: var(--muted);
-}
-
-.tier-row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 16px;
-}
-
-.slot {
-  border: 1px solid #cfcfcf;
-  border-radius: 8px;
-  background: transparent;
-}
-
-.tier-gold .slot {
-  width: 168px;
-  height: 84px;
-}
-
-.tier-silver .slot {
-  width: 144px;
-  height: 72px;
-}
-
-.tier-bronze .slot {
-  width: 120px;
-  height: 60px;
 }
 
 /* ---- footer: one slim centered line ---- */
@@ -643,4 +603,24 @@ h1 {
   .site-header { padding-left: 12px; gap: 8px; }
   .nav-actions { gap: 8px; }
   .nav-actions .button-small { padding-inline: 12px; font-size: 0.8rem; }
+}
+
+/* Homepage navigation: independent side columns keep the logo centered. */
+.home-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  padding: 10px 12px;
+}
+.home-header .nav-discord { justify-self: start; padding: 8px; }
+.home-header .wordmark { justify-self: center; }
+.home-header .nav-actions { justify-self: end; justify-content: flex-end; }
+@media (max-width: 940px) {
+  .home-header { row-gap: 8px; border-radius: 24px; }
+  .home-header .nav-actions { grid-column: 1 / -1; grid-row: 2; gap: 8px; }
+  .home-header .wordmark-icon { height: 32px; }
+  .home-header .button-small { padding: 8px 14px; font-size: .8rem; }
+}
+@media (max-width: 380px) {
+  .home-header .nav-actions { gap: 6px; }
+  .home-header .button-small { padding-inline: 8px; font-size: .7rem; }
 }

@@ -17,5 +17,16 @@
       "source": "/sponsor/",
       "destination": "/sponsor.html"
     }
+  ],
+  "headers": [
+    {
+      "source": "/acalanes-data-fest-sponsorship.pdf",
+      "headers": [
+        {
+          "key": "Content-Disposition",
+          "value": "inline; filename=\"acalanes-data-fest-sponsorship.pdf\""
+        }
+      ]
+    }
   ]
 }
