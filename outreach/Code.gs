@@ -33,6 +33,8 @@ const PROSPECT_HEADERS = [
   'Draft created at',
   'Sent at',
   'Notes',
+  'Consent status',
+  'Consent evidence',
 ];
 
 const SUPPRESSION_HEADERS = [
@@ -46,7 +48,7 @@ const SUPPRESSION_HEADERS = [
 const SETTINGS_DEFAULTS = [
   ['Sender address', OUTREACH.senderAddress],
   ['Display name', OUTREACH.senderName],
-  ['CC address', ''],
+  ['CC address', 'yeedoreal@gmail.com'],
   ['Sponsor page URL', OUTREACH.sponsorPageUrl],
   ['Packet PDF URL', OUTREACH.packetUrl],
   ['Time zone', OUTREACH.timezone],
@@ -207,7 +209,10 @@ function createDraftBatchLocked_() {
     const status = String(row.Status || 'NEW').trim().toUpperCase();
     if (status !== 'NEW') continue;
     if (String(row['Contact eligibility'] || '').trim().toUpperCase() !== 'CONFIRMED') continue;
+    if (String(row['Consent status'] || '').trim().toUpperCase() !== 'OPTED_IN') continue;
     if (!String(row['Eligibility evidence'] || '').trim()) continue;
+    const consentEvidence = String(row['Consent evidence'] || '').trim();
+    if (!/\b20\d{2}-\d{2}-\d{2}\b/.test(consentEvidence)) continue;
     const organization = String(row.Organization || '').trim();
     const email = normalizeEmail_(row['Recipient email']);
     const companyKey = normalizeOrganization_(organization);
@@ -243,7 +248,7 @@ function createDraftBatchLocked_() {
   for (const row of selected) {
     const draft = GmailApp.createDraft(
       normalizeEmail_(row['Recipient email']),
-      'Support student data science at Acalanes Data Fest',
+      'Acalanes Data Fest 2026 sponsorship information',
       buildEmailBody_(row, sponsorPageUrl),
       {
         from: sender,
@@ -302,19 +307,22 @@ function buildEmailBody_(row, sponsorPageUrl) {
   const personalizationLine = personalization ? `\n${personalization}\n` : '\n';
 
   return `${greeting}${personalizationLine}
-We’re Acalanes Data Science Club, a student-run club at Acalanes High School, and we’re organizing Acalanes Data Fest: a free, one-day data science and AI hackathon for up to 50 Bay Area high school students. The event is Saturday, November 21, from 9 AM to 5 PM at BRIDGEGOOD’s studio in Oakland. Students will work in teams of 1–4, build data projects, and present to judges. Beginners are welcome.
+Thank you for your interest in Acalanes Data Fest. Here are the sponsorship details. Acalanes Data Science Club is organizing a free, student-run data science and AI hackathon for up to 50 Bay Area high school students, hosted by BRIDGEGOOD at its Oakland studio on Saturday, November 21, 2026, from 9 AM to 5 PM Pacific. Students will work in teams of 1–4 to explore real datasets, build projects, and present to judges. Beginners are welcome.
 
-We’re looking for support with food, drinks, prizes, and project materials so students can take part at no cost. Suggested cash levels are $250 Community, $500 Event, $1,000 Lead, and $2,500 Presenting; in-kind support such as food, software, compute, prizes, or project materials is welcome too. All cash levels include the standard sponsor recognition described on our site, and sponsor representatives may optionally join as judges or mentors.
+Suggested cash levels are $250 Community Sponsor, $500 Event Sponsor, $1,000 Lead Sponsor, and $2,500 Presenting Sponsor. In-kind support such as food, drinks, prizes, software, compute, or other project materials is welcome; a different amount or a combination of cash and in-kind support is welcome too. Contributions help cover event costs and keep participation free.
 
-The top three teams will also be invited to showcase their projects at BRIDGEGOOD’s Inspiration Awards at Salesforce Tower on December 11. BRIDGEGOOD covers their tickets and poster printing.
+Cash sponsors receive standard recognition at Data Fest and Acalanes Data Science Club events for a year. Sponsor representatives may also join as judges or mentors. The top three teams are invited to showcase their work at BRIDGEGOOD’s Inspiration Awards at Salesforce Tower on December 11.
 
-Would ${organization} be open to discussing one of these suggested levels or an in-kind contribution? The sponsor page has the full event details and benefits: ${sponsorPageUrl}. I’ve attached the sponsorship packet as well.
+The sponsor page has the full event details and benefits: ${sponsorPageUrl}. I’ve attached the sponsorship packet as well. If one of these options could fit ${organization}, reply here and we can coordinate.
 
-If this is not a fit or you would prefer no further messages from us, just reply and let us know.
+If you would prefer not to receive further sponsor updates, reply with “unsubscribe” and we’ll honor your request.
 
-Thank you for considering it,
+Thank you,
 Data Science Leadership
 Acalanes Data Science Club
+Acalanes High School
+1200 Pleasant Hill Road
+Lafayette, CA 94549
 leadership@ahsdata.com
 https://ahsdata.com/`;
 }
@@ -338,30 +346,42 @@ function getOrCreateSheet_(spreadsheet, name) {
 }
 
 function ensureHeaders_(sheet, expected) {
-  if (!sheet.getLastRow()) {
+  if (!sheet.getLastRow() || !sheet.getLastColumn()) {
     sheet.getRange(1, 1, 1, expected.length).setValues([expected]).setFontWeight('bold');
     return;
   }
-  const headers = sheet.getRange(1, 1, 1, expected.length).getDisplayValues()[0];
+  const lastColumn = sheet.getLastColumn();
+  const headers = sheet.getRange(1, 1, 1, lastColumn).getDisplayValues()[0];
   if (headers.every(value => !value)) {
     sheet.getRange(1, 1, 1, expected.length).setValues([expected]).setFontWeight('bold');
     return;
   }
   const missing = expected.filter(name => !headers.includes(name));
-  if (missing.length) throw new Error(`The ${sheet.getName()} sheet is missing these columns: ${missing.join(', ')}.`);
+  if (missing.length) {
+    sheet.getRange(1, lastColumn + 1, 1, missing.length).setValues([missing]).setFontWeight('bold');
+  }
 }
 
 function readRows_(sheet, expectedHeaders) {
   const lastRow = sheet.getLastRow();
   if (lastRow < 2) return [];
-  const values = sheet.getRange(2, 1, lastRow - 1, expectedHeaders.length).getValues();
-  return values.map(row => Object.fromEntries(expectedHeaders.map((header, index) => [header, row[index]])));
+  const lastColumn = sheet.getLastColumn();
+  const headers = sheet.getRange(1, 1, 1, lastColumn).getDisplayValues()[0];
+  const values = sheet.getRange(2, 1, lastRow - 1, lastColumn).getValues();
+  return values.map(row => Object.fromEntries(expectedHeaders.map(header => [header, row[headers.indexOf(header)]])));
 }
 
 function writeRows_(sheet, headers, rows) {
   if (!rows.length) return;
-  const values = rows.map(row => headers.map(header => row[header] === undefined ? '' : row[header]));
-  sheet.getRange(2, 1, values.length, headers.length).setValues(values);
+  const lastColumn = sheet.getLastColumn();
+  const sheetHeaders = sheet.getRange(1, 1, 1, lastColumn).getDisplayValues()[0];
+  const values = sheet.getRange(2, 1, rows.length, lastColumn).getValues();
+  rows.forEach((row, rowIndex) => {
+    headers.forEach(header => {
+      values[rowIndex][sheetHeaders.indexOf(header)] = row[header] === undefined ? '' : row[header];
+    });
+  });
+  sheet.getRange(2, 1, values.length, lastColumn).setValues(values);
 }
 
 function readSettings_(sheet) {
