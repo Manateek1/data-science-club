@@ -115,3 +115,20 @@
     padding-top: 112px;
   }
 }
+
+.judge-commitment {
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #dedede;
+  font-size: 0.9rem;
+}
+
+.judge-commitment h2 {
+  margin: 0 0 12px;
+  font-size: 1.15rem;
+}
+
+.judge-commitment p { margin: 0 0 12px; }
+.judge-commitment p:last-child { margin-bottom: 0; color: var(--muted); }
+.judge-commitment ul { padding-left: 20px; margin: 0 0 12px; }
+.judge-commitment li + li { margin-top: 6px; }
