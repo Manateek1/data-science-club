@@ -130,5 +130,3 @@
 
 .judge-commitment p { margin: 0 0 12px; }
 .judge-commitment p:last-child { margin-bottom: 0; color: var(--muted); }
-.judge-commitment ul { padding-left: 20px; margin: 0 0 12px; }
-.judge-commitment li + li { margin-top: 6px; }
