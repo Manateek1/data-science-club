@@ -1,6 +1,6 @@
 # Sponsor page and prospectus
 
-`/sponsor` is a static, responsive Vite entry (`sponsor.html`), with Vercel rewrites for `/sponsor` and `/sponsor/`. The homepage sponsor section links to it. Its PDF download is `public/acalanes-data-fest-sponsorship.pdf`.
+`/sponsor` is a static, responsive Vite entry (`sponsor.html`), with Vercel rewrites for `/sponsor` and `/sponsor/`. The homepage sponsor section links to it. Its browser-viewable PDF is `public/acalanes-data-fest-sponsorship.pdf`. The prospectus link opens a new tab; Vercel serves it with inline content disposition.
 
 ## Update the PDF
 
