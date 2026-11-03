@@ -149,10 +149,41 @@ a {
   display: flex;
 }
 
-.nav-discord img {
+.nav-socials {
+  display: flex;
+  align-items: center;
+  justify-self: start;
+  gap: 4px;
+}
+
+.nav-socials a {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.nav-discord img,
+.nav-instagram svg {
   display: block;
+  width: 24px;
   height: 24px;
-  width: auto;
+}
+
+.nav-instagram {
+  color: var(--blue);
+}
+
+.nav-instagram svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+}
+
+.nav-instagram .instagram-dot {
+  fill: currentColor;
+  stroke: none;
 }
 
 /* ---- hero: one centered viewport ---- */
@@ -611,7 +642,7 @@ h1 {
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   padding: 10px 12px;
 }
-.home-header .nav-discord { justify-self: start; padding: 8px; }
+.home-header .nav-socials { justify-self: start; }
 .home-header .wordmark { justify-self: center; }
 .home-header .nav-actions { justify-self: end; justify-content: flex-end; }
 @media (max-width: 940px) {
