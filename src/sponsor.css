@@ -17,14 +17,16 @@
 .sponsor-facts dt { font-size: .8rem; color: var(--muted); margin-bottom: 6px; }
 .sponsor-facts dd { margin: 0; font-weight: 500; }
 .sponsor-page section { margin-top: 28px; }
-.sponsor-benefits { border-left: 3px solid var(--blue); padding-left: 20px; }
+.sponsor-benefits { padding: 18px 20px; border: 1px solid #dce7f8; border-radius: 14px; background: #f5f8fe; }
 .sponsor-benefits ul { margin: 0; padding-left: 20px; }
 .sponsor-benefits li + li { margin-top: 10px; }
 .sponsor-levels-intro { max-width: 68ch; }
-.sponsor-tier-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 16px; }
-.sponsor-tier { min-width: 0; padding: 16px 18px; border: 1px solid #dedede; border-radius: 12px; background: #fff; }
-.sponsor-tier h3 { margin: 0 0 4px; font-size: .92rem; font-weight: 600; }
+.sponsor-tier-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 16px; }
+.sponsor-tier { min-width: 0; padding: 18px 20px; border: 1px solid #dfe4ec; border-radius: 14px; background: #fff; box-shadow: 0 4px 14px rgb(22 40 72 / 4%); }
+.sponsor-tier h3 { margin: 0 0 5px; font-size: .95rem; font-weight: 650; }
 .sponsor-tier .tier-amount { margin: 0; color: var(--blue); font-size: 1.45rem; font-weight: 700; letter-spacing: -.025em; }
+.sponsor-tier .tier-perk { margin: 10px 0 0; color: #465164; font-size: .9rem; line-height: 1.5; }
+.sponsor-tier-featured { border-color: #9db7e9; background: linear-gradient(145deg, #f5f8ff, #fff 70%); }
 .sponsor-tier-kind { grid-column: 1 / -1; }
 .sponsor-levels-note { margin-top: 12px !important; color: var(--muted); font-size: .9rem; }
 .sponsor-contact { border-top: 1px solid #dedede; padding-top: 24px; scroll-margin-top: 24px; }
@@ -58,13 +60,15 @@
   .sponsor-facts { grid-template-columns: 1fr 1fr; margin-top: 3mm; padding: 2.5mm 0; gap: 5mm; }
   .sponsor-facts dt { font-size: 8pt; margin-bottom: .5mm; }
   .sponsor-page section { margin-top: 3mm; break-inside: avoid; }
-  .sponsor-benefits { padding-left: 3mm; }
+  .sponsor-benefits { padding: 2.5mm 3mm; border-radius: 2mm; }
   .sponsor-benefits ul { padding-left: 4mm; }
   .sponsor-benefits li + li { margin-top: 1mm; }
-  .sponsor-tier-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2mm; margin-top: 1.5mm; }
-  .sponsor-tier { padding: 2mm; border-radius: 1.5mm; }
-  .sponsor-tier h3 { font-size: 8pt; margin-bottom: .5mm; }
-  .sponsor-tier .tier-amount { font-size: 12pt; }
+  .sponsor-tier-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2mm; margin-top: 1.5mm; }
+  .sponsor-tier { padding: 2.4mm 3mm; border-radius: 1.5mm; box-shadow: none; }
+  .sponsor-tier h3 { font-size: 8.5pt; margin-bottom: .5mm; }
+  .sponsor-tier .tier-amount { font-size: 11pt; }
+  .sponsor-tier .tier-perk { margin-top: 1mm; font-size: 8pt; line-height: 1.25; }
+  .sponsor-tier-featured { background: #f5f8ff; }
   .sponsor-tier-kind { grid-column: 1 / -1; }
   .sponsor-tier-kind p { margin-bottom: 0; }
   .sponsor-levels-note { margin-top: 1mm !important; font-size: 8pt; }
