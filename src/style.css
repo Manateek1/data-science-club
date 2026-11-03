@@ -665,7 +665,10 @@ h1 {
    dock are visible. Keep the hero clear of the fixed nav and fit its main
    content into the first screen instead of relying on width-only type sizes. */
 @media (max-height: 800px) {
-  .hero { padding: 108px 0 32px; }
+  .hero {
+    justify-content: flex-start;
+    padding: 112px 0 32px;
+  }
   h1 {
     font-size: clamp(2.5rem, min(8vw, 9svh), 5rem);
     margin-bottom: 18px;
