@@ -3,6 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "make-audio": "node scripts/generate-bed.mjs",
     "lint": "hyperframes lint",
     "preview": "hyperframes preview",
     "render": "hyperframes render --fps 30 --quality high --output exports/acalanes-data-fest-intro-9x16.mp4"
