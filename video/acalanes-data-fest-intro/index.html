@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1080, initial-scale=1" />
+    <title>Acalanes Data Fest 2026 — Instagram intro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --blue: #0d45d2;
+        --navy: #143a78;
+        --ink: #111111;
+        --muted: #5c5c5c;
+        --line: #dfe6f5;
+        --wash: #f4f7ff;
+      }
+
+      * { box-sizing: border-box; }
+      html, body {
+        width: 1080px;
+        height: 1920px;
+        margin: 0;
+        overflow: hidden;
+        background: #fff;
+        color: var(--ink);
+        font-family: "Poppins", "Avenir Next", Avenir, Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: geometricPrecision;
+      }
+
+      #root {
+        position: relative;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: #fff;
+        isolation: isolate;
+      }
+
+      #root::before {
+        position: absolute;
+        z-index: 0;
+        inset: 0;
+        background-image: radial-gradient(#dce5f8 1.2px, transparent 1.2px);
+        background-position: 30px 20px;
+        background-size: 28px 28px;
+        content: "";
+        mask-image: linear-gradient(115deg, transparent 5%, #000 48%, transparent 95%);
+        opacity: 0.44;
+      }
+
+      #root::after {
+        position: absolute;
+        z-index: 0;
+        top: 845px;
+        left: 500px;
+        width: 850px;
+        height: 850px;
+        border: 1px solid #edf1fa;
+        border-radius: 50%;
+        content: "";
+        transform: translate(-50%, -50%);
+      }
+
+      .global-header {
+        position: absolute;
+        z-index: 20;
+        top: 92px;
+        right: 84px;
+        left: 84px;
+        display: flex;
+        align-items: center;
+        gap: 22px;
+        opacity: 0;
+      }
+
+      .global-mark { width: 66px; height: 66px; object-fit: contain; }
+      .header-copy { display: flex; flex-direction: column; gap: 2px; }
+      .header-copy strong {
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: 0.035em;
+      }
+      .header-copy span {
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 500;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+      .header-tag {
+        margin-left: auto;
+        color: var(--blue);
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.13em;
+      }
+
+      .global-footer {
+        position: absolute;
+        z-index: 20;
+        right: 84px;
+        bottom: 90px;
+        left: 84px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-top: 1px solid var(--line);
+        padding-top: 18px;
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        opacity: 0;
+      }
+      .global-footer .handle { color: var(--blue); font-weight: 700; }
+
+      .scene {
+        position: absolute;
+        z-index: 2;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 300px 82px 300px;
+        text-align: center;
+        opacity: 0;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        color: var(--muted);
+        font-size: 15px;
+        font-weight: 600;
+        letter-spacing: 0.19em;
+        text-transform: uppercase;
+      }
+      .eyebrow::before {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: var(--blue);
+        content: "";
+      }
+
+      .opener { gap: 36px; }
+      .hero-words {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 124px;
+        font-weight: 800;
+        letter-spacing: -0.075em;
+        line-height: 0.99;
+      }
+      .hero-words span { display: block; opacity: 0; }
+      .blue { color: var(--blue); }
+      .signal-chart { width: 690px; height: 162px; overflow: visible; }
+      .signal-chart path { fill: none; stroke: var(--blue); stroke-linecap: round; stroke-linejoin: round; stroke-width: 4; }
+      .signal-chart .axis { stroke: #dce5f6; stroke-width: 2; }
+      .signal-chart circle { fill: var(--blue); opacity: 0; transform-box: fill-box; transform-origin: center; }
+      .chart-caption {
+        color: #8791a5;
+        font-size: 13px;
+        font-weight: 500;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+      }
+
+      .title-scene { gap: 18px; }
+      .title-mark {
+        width: 230px;
+        height: 222px;
+        background: center / contain no-repeat url("./assets/a-logo.png");
+        opacity: 0;
+      }
+      .title-overline {
+        color: var(--muted);
+        font-size: 19px;
+        font-weight: 600;
+        letter-spacing: 0.28em;
+        opacity: 0;
+      }
+      .title-main {
+        margin: 0;
+        font-size: 104px;
+        font-weight: 800;
+        letter-spacing: -0.075em;
+        line-height: 0.95;
+        opacity: 0;
+      }
+      .title-year {
+        color: var(--blue);
+        font-size: 68px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        opacity: 0;
+      }
+      .title-rule {
+        width: 180px;
+        height: 4px;
+        margin-top: 12px;
+        border-radius: 4px;
+        background: var(--blue);
+      }
+
+      .ideas { gap: 34px; }
+      .ideas-title {
+        max-width: 880px;
+        margin: 0;
+        font-size: 78px;
+        font-weight: 700;
+        letter-spacing: -0.06em;
+        line-height: 1.07;
+      }
+      .ideas-title span { color: var(--blue); }
+      .bar-chart {
+        display: flex;
+        align-items: end;
+        justify-content: center;
+        gap: 18px;
+        width: 670px;
+        height: 230px;
+        border-bottom: 2px solid #cbd7ee;
+        padding: 0 32px;
+      }
+      .bar {
+        width: 66px;
+        height: var(--bar-height);
+        border-radius: 13px 13px 0 0;
+        background: linear-gradient(180deg, #7da0f3, var(--blue));
+        transform-origin: 50% 100%;
+      }
+      .bar:nth-child(2n) { background: var(--navy); }
+      .idea-caption {
+        color: var(--muted);
+        font-size: 22px;
+        font-weight: 500;
+        letter-spacing: 0.01em;
+        opacity: 0;
+      }
+
+      .audience { gap: 28px; }
+      .audience-title {
+        max-width: 870px;
+        margin: 0;
+        font-size: 79px;
+        font-weight: 700;
+        letter-spacing: -0.065em;
+        line-height: 1.03;
+      }
+      .audience-title span { color: var(--blue); }
+      .feature-row { display: flex; gap: 14px; margin-top: 26px; }
+      .feature-chip {
+        border: 1px solid #d5e0f5;
+        border-radius: 99px;
+        padding: 14px 23px;
+        color: var(--navy);
+        background: rgba(244, 247, 255, 0.78);
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      .final-scene { gap: 24px; }
+      .final-kicker {
+        color: var(--muted);
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        opacity: 0;
+      }
+      .date-lockup {
+        display: flex;
+        align-items: baseline;
+        justify-content: center;
+        gap: 17px;
+        opacity: 0;
+      }
+      .date-month {
+        color: var(--blue);
+        font-size: 36px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+      }
+      .date-day {
+        font-size: 150px;
+        font-weight: 800;
+        letter-spacing: -0.085em;
+        line-height: 0.95;
+      }
+      .date-year {
+        color: #78849b;
+        font-size: 34px;
+        font-weight: 600;
+      }
+      .event-time {
+        color: var(--ink);
+        font-size: 32px;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        opacity: 0;
+      }
+      .event-place {
+        color: var(--muted);
+        font-size: 16px;
+        font-weight: 600;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        opacity: 0;
+      }
+      .host-divider { width: 98px; height: 1px; margin: 6px 0; background: #dbe3f3; }
+      .host-label {
+        color: #8791a5;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        opacity: 0;
+      }
+      .bridgegood { width: 410px; height: auto; object-fit: contain; opacity: 0; }
+      .register-line {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-top: 20px;
+        border-radius: 99px;
+        padding: 18px 26px;
+        color: #fff;
+        background: var(--blue);
+        font-size: 16px;
+        font-weight: 700;
+        letter-spacing: 0.065em;
+        opacity: 0;
+      }
+      .register-line .url { font-weight: 500; letter-spacing: 0.015em; }
+
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after { scroll-behavior: auto !important; }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="acalanes-data-fest-intro" data-start="0" data-duration="14.4" data-width="1080" data-height="1920">
+      <header class="global-header">
+        <img class="global-mark" src="./assets/a-logo.png" alt="" />
+        <div class="header-copy">
+          <strong>ACALANES DATA FEST</strong>
+          <span>Student-run · Bay Area</span>
+        </div>
+        <div class="header-tag">2026</div>
+      </header>
+
+      <section id="opening" class="scene opener clip" data-start="0" data-duration="2.9" data-track-index="1">
+        <div class="eyebrow">A BAY AREA HACKATHON</div>
+        <div class="hero-words" aria-label="Real data. Real ideas.">
+          <span class="black-word">REAL DATA.</span>
+          <span class="blue-word blue">REAL IDEAS.</span>
+        </div>
+        <svg class="signal-chart" viewBox="0 0 690 162" aria-hidden="true">
+          <path class="axis" d="M10 140H680" />
+          <path id="signal-line" d="M12 124 C80 122 91 94 145 99 S230 113 274 78 S351 81 392 72 S477 87 524 43 S603 54 678 16" />
+          <circle class="signal-point" cx="145" cy="99" r="8" />
+          <circle class="signal-point" cx="274" cy="78" r="8" />
+          <circle class="signal-point" cx="392" cy="72" r="8" />
+          <circle class="signal-point" cx="524" cy="43" r="8" />
+          <circle class="signal-point" cx="678" cy="16" r="9" />
+        </svg>
+        <div class="chart-caption">See what you can build</div>
+      </section>
+
+      <section id="title" class="scene title-scene clip" data-start="2.65" data-duration="3.15" data-track-index="2">
+        <div class="title-mark" role="img" aria-label="Acalanes A"></div>
+        <div class="title-overline">ACALANES</div>
+        <h1 class="title-main">DATA<br />FEST</h1>
+        <div class="title-year">2026</div>
+        <div class="title-rule"></div>
+      </section>
+
+      <section id="ideas" class="scene ideas clip" data-start="5.5" data-duration="3.1" data-track-index="3">
+        <div class="eyebrow">MAKE IT MEAN SOMETHING</div>
+        <h2 class="ideas-title">Explore real datasets.<br /><span>Build real ideas.</span></h2>
+        <div class="bar-chart" aria-hidden="true">
+          <div class="bar" style="--bar-height: 72px"></div>
+          <div class="bar" style="--bar-height: 126px"></div>
+          <div class="bar" style="--bar-height: 98px"></div>
+          <div class="bar" style="--bar-height: 184px"></div>
+          <div class="bar" style="--bar-height: 144px"></div>
+          <div class="bar" style="--bar-height: 215px"></div>
+          <div class="bar" style="--bar-height: 192px"></div>
+        </div>
+        <div class="idea-caption">A student-run data hackathon</div>
+      </section>
+
+      <section id="audience" class="scene audience clip" data-start="8.35" data-duration="2.35" data-track-index="4">
+        <div class="eyebrow">YOUR IDEAS BELONG HERE</div>
+        <h2 class="audience-title">For <span>Bay Area</span><br />high schoolers.</h2>
+        <div class="feature-row">
+          <div class="feature-chip">Free to join</div>
+          <div class="feature-chip">Beginners welcome</div>
+        </div>
+      </section>
+
+      <section id="event" class="scene final-scene clip" data-start="10.45" data-duration="3.95" data-track-index="5">
+        <div class="final-kicker">Save your spot</div>
+        <div class="date-lockup">
+          <span class="date-month">NOV</span>
+          <span class="date-day">21</span>
+          <span class="date-year">2026</span>
+        </div>
+        <div class="event-time">9 AM — 5 PM</div>
+        <div class="event-place">Oakland, California</div>
+        <div class="host-divider"></div>
+        <div class="host-label">Hosted by</div>
+        <img class="bridgegood" src="./assets/bridgegood-wordmark.png" alt="BRIDGEGOOD" />
+        <div class="register-line"><span>REGISTER</span><span aria-hidden="true">↗</span><span class="url">luma.com/npjpgzhy</span></div>
+      </section>
+
+      <footer class="global-footer">
+        <span>Acalanes Data Science Club</span>
+        <span class="handle">@aca.datasci.club</span>
+      </footer>
+    </div>
+
+    <script src="./node_modules/gsap/dist/gsap.min.js"></script>
+    <script>
+      const tl = gsap.timeline({ paused: true, defaults: { ease: "power3.out" } });
+
+      tl.fromTo(".global-header", { y: -24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.65 }, 0.08);
+      tl.fromTo(".global-footer", { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 }, 0.16);
+      tl.fromTo("#opening", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 0.08);
+
+      tl.fromTo("#opening .eyebrow", { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5 }, 0.18);
+      tl.fromTo("#opening .black-word", { y: 72, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7 }, 0.4);
+      tl.fromTo("#opening .blue-word", { y: 72, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7 }, 0.62);
+      const signal = document.querySelector("#signal-line");
+      const signalLength = signal.getTotalLength();
+      gsap.set(signal, { strokeDasharray: signalLength, strokeDashoffset: signalLength });
+      tl.to(signal, { strokeDashoffset: 0, duration: 1.15, ease: "power2.inOut" }, 0.92);
+      tl.fromTo("#opening .signal-point", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, stagger: 0.11 }, 1.25);
+      tl.fromTo("#opening .chart-caption", { y: 12, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45 }, 1.78);
+      tl.to("#opening", { opacity: 0, duration: 0.25 }, 2.55);
+
+      tl.fromTo("#title", { opacity: 0 }, { opacity: 1, duration: 0.18 }, 2.67);
+      tl.fromTo("#title .title-mark", { y: 42, scale: 0.84, opacity: 0 }, { y: 0, scale: 1, opacity: 1, duration: 0.8 }, 2.72);
+      tl.fromTo("#title .title-overline", { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: 0.55 }, 3.05);
+      tl.fromTo("#title .title-main", { y: 38, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7 }, 3.24);
+      tl.fromTo("#title .title-year", { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: 0.55 }, 4.02);
+      tl.fromTo("#title .title-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.55, ease: "power2.out" }, 4.22);
+      tl.to("#title", { opacity: 0, duration: 0.25 }, 5.5);
+
+      tl.fromTo("#ideas", { opacity: 0 }, { opacity: 1, duration: 0.18 }, 5.52);
+      tl.fromTo("#ideas .eyebrow", { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45 }, 5.62);
+      tl.fromTo("#ideas .ideas-title", { y: 38, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7 }, 5.85);
+      tl.fromTo("#ideas .bar", { scaleY: 0 }, { scaleY: 1, duration: 0.55, stagger: 0.075, ease: "back.out(1.35)" }, 6.35);
+      tl.fromTo("#ideas .idea-caption", { y: 15, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5 }, 7.05);
+      tl.to("#ideas", { opacity: 0, duration: 0.22 }, 8.12);
+
+      tl.fromTo("#audience", { opacity: 0 }, { opacity: 1, duration: 0.18 }, 8.37);
+      tl.fromTo("#audience .eyebrow", { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45 }, 8.4);
+      tl.fromTo("#audience .audience-title", { y: 38, opacity: 0 }, { y: 0, opacity: 1, duration: 0.65 }, 8.68);
+      tl.fromTo("#audience .feature-chip", { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, stagger: 0.13 }, 9.3);
+      tl.to("#audience", { opacity: 0, duration: 0.22 }, 10.28);
+
+      tl.fromTo("#event", { opacity: 0 }, { opacity: 1, duration: 0.18 }, 10.48);
+      tl.fromTo("#event .final-kicker", { y: 14, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45 }, 10.52);
+      tl.fromTo("#event .date-lockup", { y: 34, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7 }, 10.75);
+      tl.fromTo("#event .event-time", { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5 }, 11.18);
+      tl.fromTo("#event .event-place", { y: 14, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45 }, 11.42);
+      tl.fromTo("#event .host-divider", { scaleX: 0 }, { scaleX: 1, duration: 0.4 }, 11.72);
+      tl.fromTo("#event .host-label", { opacity: 0 }, { opacity: 1, duration: 0.35 }, 11.86);
+      tl.fromTo("#event .bridgegood", { y: 12, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5 }, 12.0);
+      tl.fromTo("#event .register-line", { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: 0.55 }, 12.65);
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines["acalanes-data-fest-intro"] = tl;
+    </script>
+  </body>
+</html>

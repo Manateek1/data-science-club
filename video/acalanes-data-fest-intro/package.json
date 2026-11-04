@@ -1,0 +1,14 @@
+{
+  "name": "acalanes-data-fest-intro",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "lint": "hyperframes lint",
+    "preview": "hyperframes preview",
+    "render": "hyperframes render --fps 30 --quality high --output exports/acalanes-data-fest-intro-9x16.mp4"
+  },
+  "devDependencies": {
+    "gsap": "3.14.2",
+    "hyperframes": "0.9.9"
+  }
+}
