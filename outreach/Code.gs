@@ -1,3 +1,6 @@
+// RETIRED: sponsor research and drafts are now handled manually in chat on request.
+// No active Apps Script triggers were present when checked on 2026-11-04.
+// Do not install this legacy script; see outreach/README.md for the active workflow.
 const OUTREACH = {
   timezone: 'America/Los_Angeles',
   prospectsSheet: 'Prospects',
