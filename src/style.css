@@ -495,7 +495,7 @@ h1 {
 .sponsors {
   width: min(720px, calc(100% - 48px));
   margin: 0 auto;
-  padding: 24px 0 80px;
+  padding: 24px 0 36px;
   text-align: center;
 }
 
@@ -565,57 +565,120 @@ h1 {
   }
 }
 
-/* ---- footer: one slim centered line ---- */
+/* ---- footer: compact social and host credit ---- */
 
 .site-footer {
   width: var(--content);
   margin: 0 auto;
-  padding: 28px 0 36px;
-  text-align: center;
+  padding: 18px 0 24px;
+  border-top: 1px solid #e6eaf0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  text-align: left;
+}
+
+.footer-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  min-width: 0;
 }
 
 .site-footer p {
   margin: 0;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   color: var(--muted);
 }
 
-.site-footer a {
+.footer-socials {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-social-link {
+  display: inline-flex;
+  align-items: center;
   color: var(--blue);
   font-weight: 500;
+  font-size: 0.82rem;
   text-decoration: none;
 }
 
-.site-footer a:hover {
+.footer-social-link:hover {
   text-decoration: underline;
 }
 
-/* Discord icon in the footer social line */
-.discord-icon {
-  height: 20px;
-  width: auto;
-  vertical-align: middle;
+.footer-discord-link {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid #e3e8f0;
+  border-radius: 50%;
+  transition: background-color 150ms ease, border-color 150ms ease;
 }
 
-/* Hosted-by lockup: BRIDGEGOOD plays a supporting role (their brand
-   guidance), so the logo sits small in the footer with its own space. */
+.footer-discord-link:hover {
+  border-color: #cbd7ea;
+  background: #f5f8ff;
+}
+
+.discord-icon {
+  display: block;
+  width: 16px;
+  height: 16px;
+}
+
 .hosted-by {
-  margin-top: 14px;
+  margin: 0;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 10px;
+  gap: 9px;
+  flex: 0 0 auto;
+}
+
+.footer-host-label {
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 500;
 }
 
 .hosted-by img {
   display: block;
-  height: 28px;
+  height: 21px;
   width: auto;
 }
 
 /* ---- small screens ---- */
 
 @media (max-width: 560px) {
+  .sponsors {
+    padding-bottom: 28px;
+  }
+
+  .site-footer {
+    width: calc(100% - 36px);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 0 22px;
+  }
+
+  .footer-meta {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .hosted-by img {
+    height: 20px;
+  }
+
   .site-header {
     top: 12px;
     width: calc(100% - 24px);
