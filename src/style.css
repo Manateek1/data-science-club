@@ -599,19 +599,7 @@ h1 {
   gap: 12px;
 }
 
-.footer-social-link {
-  display: inline-flex;
-  align-items: center;
-  color: var(--blue);
-  font-weight: 500;
-  font-size: 0.82rem;
-  text-decoration: none;
-}
-
-.footer-social-link:hover {
-  text-decoration: underline;
-}
-
+.footer-instagram-link,
 .footer-discord-link {
   display: grid;
   place-items: center;
@@ -622,6 +610,25 @@ h1 {
   transition: background-color 150ms ease, border-color 150ms ease;
 }
 
+.footer-instagram-link {
+  color: var(--blue);
+}
+
+.footer-instagram-link svg {
+  display: block;
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+}
+
+.footer-instagram-link .instagram-dot {
+  fill: currentColor;
+  stroke: none;
+}
+
+.footer-instagram-link:hover,
 .footer-discord-link:hover {
   border-color: #cbd7ea;
   background: #f5f8ff;
