@@ -35,6 +35,13 @@
 .sponsor-benefits { border-color: #dce7f8 !important; background: #f5f8fe !important; }
 .sponsor-benefits ul { margin: 0; padding-left: 20px; }
 .sponsor-benefits li + li { margin-top: 10px; }
+.sponsor-showcase { border-color: #dce7f8 !important; background: #f8faff !important; }
+.sponsor-showcase-lead, .sponsor-showcase-community { padding: 16px 18px; border: 1px solid #dfe4ec; border-radius: 14px; background: #fff; }
+.sponsor-showcase-lead { margin-bottom: 12px; border-color: #9db7e9; background: linear-gradient(145deg, #f5f8ff, #fff 70%); }
+.sponsor-showcase-label { margin: 0 0 6px !important; color: var(--muted); font-size: .76rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+.sponsor-showcase-name { margin: 0 !important; font-size: 1.3rem; font-weight: 700; }
+.sponsor-showcase-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 10px 0 0; padding: 0; list-style: none; }
+.sponsor-showcase-list li { padding: 11px 12px; border: 1px solid #e6eaf0; border-radius: 10px; background: #f9fafc; font-weight: 600; }
 .sponsor-levels-intro { max-width: 68ch; color: var(--muted); }
 .sponsor-tier-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 16px; }
 .sponsor-tier { min-width: 0; padding: 18px 20px; border: 1px solid #dfe4ec; border-radius: 16px; background: #fff; box-shadow: 0 4px 14px rgb(22 40 72 / 4%); }
@@ -56,6 +63,7 @@
   .sponsor-page section { padding: 20px; }
   .sponsor-tier-grid { grid-template-columns: 1fr; }
   .sponsor-tier-kind { grid-column: auto; }
+  .sponsor-showcase-list { grid-template-columns: 1fr; }
   .sponsor-footer { flex-wrap: wrap; }
 }
 
