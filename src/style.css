@@ -500,15 +500,69 @@ h1 {
 }
 
 .sponsors h2 {
-  margin: 0 0 40px;
+  margin: 0 0 24px;
   font-size: 1.5rem;
   font-weight: 600;
   letter-spacing: -0.01em;
 }
 
-.sponsors-status {
+.sponsors-roster {
+  display: grid;
+  gap: 14px;
   margin: 0 0 24px;
+  text-align: left;
+}
+
+.sponsor-roster-lead,
+.sponsor-roster-community {
+  padding: 18px 22px;
+  border: 1px solid #dfe4ec;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 4px 14px rgb(22 40 72 / 4%);
+}
+
+.sponsor-roster-lead {
+  border-color: #9db7e9;
+  background: linear-gradient(145deg, #f5f8ff, #fff 70%);
+}
+
+.sponsor-roster-label {
+  margin: 0 0 6px;
   color: var(--muted);
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.sponsor-roster-name {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.sponsor-community-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sponsor-community-list li {
+  padding: 12px 14px;
+  border: 1px solid #e6eaf0;
+  border-radius: 12px;
+  background: #f9fafc;
+  font-weight: 600;
+}
+
+@media (max-width: 560px) {
+  .sponsor-community-list {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ---- footer: one slim centered line ---- */
