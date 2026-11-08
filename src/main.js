@@ -1,6 +1,7 @@
 // Entry point — imports the stylesheet, hero effects, and the scroll cinematic.
 // Modules are deferred by default, so the DOM is ready when these run.
 import './style.css';
+import './event-sections.css';
 import { initHeroGrid } from './hero-grid.js';
 import { initHeroIntro } from './hero-intro.js';
 import { initCinematic } from './cinematic.js';
