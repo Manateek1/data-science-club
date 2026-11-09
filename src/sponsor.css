@@ -56,6 +56,10 @@
 .contact-email { font-weight: 600; overflow-wrap: anywhere; }
 .sponsor-footer { display: flex; justify-content: space-between; gap: 16px; margin-top: 28px; padding: 20px 0 32px; border-top: 1px solid #dedede; font-size: .8rem; }
 
+@media (min-width: 960px) {
+  .sponsor-showcase-list { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+}
+
 @media (max-width: 560px) {
   .sponsor-document { width: calc(100% - 36px); padding-top: 132px; }
   .sponsor-intro { padding: 16px 0 42px; }
