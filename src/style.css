@@ -612,6 +612,7 @@ h1 {
 }
 .sponsor-logo-image-algoverse { width: 52px; height: 52px; max-height: 52px; border-radius: 7px; }
 .sponsor-logo-image-argosx { width: min(100%, 150px); max-height: 36px; }
+.sponsor-logo-image-adal { width: min(100%, 150px); max-height: 36px; }
 .sponsor-logo-image-momen { width: min(100%, 152px); max-height: 40px; }
 .sponsor-logo-image-adaption, .sponsor-logo-image-doorstop, .sponsor-logo-image-featherless { width: 48px; height: 48px; max-height: 48px; object-fit: contain; }
 .sponsor-logo-image-traycer { width: 48px; height: 48px; max-height: 48px; border-radius: 8px; }
