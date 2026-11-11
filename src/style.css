@@ -514,6 +514,7 @@ h1 {
 }
 
 .sponsor-roster-lead,
+.sponsor-roster-cash,
 .sponsor-roster-community {
   padding: 18px 22px;
   border: 1px solid #dfe4ec;
@@ -525,6 +526,19 @@ h1 {
 .sponsor-roster-lead {
   border-color: #9db7e9;
   background: linear-gradient(145deg, #f5f8ff, #fff 70%);
+}
+
+.sponsor-roster-cash {
+  border-color: #b7cfc8;
+  background: linear-gradient(145deg, #f3faf7, #fff 70%);
+}
+
+.sponsor-showcase-cash {
+  margin-bottom: 12px;
+  padding: 16px 18px;
+  border: 1px solid #b7cfc8;
+  border-radius: 14px;
+  background: linear-gradient(145deg, #f3faf7, #fff 70%);
 }
 
 .sponsor-roster-label {
@@ -589,11 +603,25 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 14px;
-  min-height: 82px;
-  padding: 12px 16px;
+  gap: 20px;
+  min-height: 132px;
+  padding: 18px 22px;
   text-align: left;
 }
+
+.sponsor-logo-link-lead .sponsor-logo-caption { font-size: 1.15rem; }
+
+.sponsor-logo-link-cash {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 18px;
+  min-height: 118px;
+  padding: 16px 20px;
+  text-align: left;
+}
+
+.sponsor-logo-link-cash .sponsor-logo-caption { font-size: 1rem; }
 
 .sponsor-logo-image {
   display: block;
@@ -603,10 +631,10 @@ h1 {
 }
 
 .sponsor-logo-image-fastyr {
-  width: 58px;
-  height: 58px;
-  max-height: 58px;
-  padding: 7px;
+  width: 88px;
+  height: 88px;
+  max-height: 88px;
+  padding: 9px;
   border-radius: 10px;
   background: #0b1730;
 }
@@ -632,6 +660,7 @@ h1 {
 .sponsor-logo-image-adal { width: min(100%, 150px); max-height: 36px; }
 .sponsor-logo-image-momen { width: min(100%, 152px); max-height: 40px; }
 .sponsor-logo-image-adaption, .sponsor-logo-image-doorstop, .sponsor-logo-image-featherless { width: 48px; height: 48px; max-height: 48px; object-fit: contain; }
+.sponsor-logo-image-doorstop-cash { width: 68px; height: 68px; max-height: 68px; }
 .sponsor-logo-image-traycer { width: 48px; height: 48px; max-height: 48px; border-radius: 8px; }
 .sponsor-logo-image-deployxa { width: min(100%, 150px); max-height: 42px; }
 
