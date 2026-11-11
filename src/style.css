@@ -654,7 +654,7 @@ h1 {
   letter-spacing: -.035em;
   line-height: 1;
 }
-.sponsor-logo-wordmark-cleanshot { font-size: 1.08rem; }
+.sponsor-logo-image-cleanshot { width: 52px; height: 52px; max-height: 52px; }
 
 .sponsor-logo-image-argosx { width: min(100%, 150px); max-height: 36px; }
 .sponsor-logo-image-adal { width: min(100%, 150px); max-height: 36px; }
