@@ -928,6 +928,9 @@ h1 {
 @media (max-width: 380px) {
   .home-header .nav-actions { gap: 6px; }
   .home-header .button-small { padding-inline: 8px; font-size: .7rem; }
+  .home-header .nav-socials a { width: 34px; height: 34px; }
+  .home-header .nav-discord img,
+  .home-header .nav-instagram svg { width: 20px; height: 20px; }
 }
 
 /* Short browser windows are common on laptops once tabs, toolbars, and the
