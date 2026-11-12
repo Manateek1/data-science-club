@@ -33,6 +33,7 @@
 .sponsor-facts dd { margin: 0; font-weight: 500; }
 .sponsor-page section { margin-top: 28px; padding: 24px; border: 1px solid #e6e6e6; border-radius: 20px; background: #fff; box-shadow: 0 2px 12px rgb(17 17 17 / 5%); }
 .sponsor-benefits { border-color: #dce7f8 !important; background: #f5f8fe !important; }
+.sponsor-prizes { border-color: #dce7f8 !important; background: #f5f8fe !important; }
 .sponsor-benefits ul { margin: 0; padding-left: 20px; }
 .sponsor-benefits li + li { margin-top: 10px; }
 .sponsor-showcase { border-color: #dce7f8 !important; background: #f8faff !important; }
@@ -76,34 +77,35 @@
   .sponsor-showcase-list { grid-template-columns: 1fr; }
 }
 
-@page { size: A4; margin: 10mm 14mm; }
+@page { size: A4; margin: 7mm 10mm; }
 @media print {
   * { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
   .sponsor-site-header, .skip-link, .pdf-download, .back-link { display: none !important; }
-  .sponsor-page { font-family: Arial, Helvetica, sans-serif; font-size: 9pt; line-height: 1.28; }
+  .sponsor-showcase { display: none !important; }
+  .sponsor-page { font-family: Arial, Helvetica, sans-serif; font-size: 8.4pt; line-height: 1.18; }
   .sponsor-document { width: 100%; padding: 0; }
-  .sponsor-intro { padding: 0 0 3mm; }
+  .sponsor-intro { padding: 0 0 2mm; }
   .sponsor-intro::before { display: none; }
-  .sponsor-eyebrow { margin-bottom: 1mm; font-size: 8pt; }
-  .sponsor-page h1 { font-size: 22pt; margin-bottom: 2mm; }
-  .sponsor-page h2 { font-size: 11.5pt; margin-bottom: 1mm; }
-  .sponsor-page p { margin-bottom: 1.5mm; }
-  .sponsor-lede { font-size: 10pt; }
-  .sponsor-meta { margin-bottom: 1mm !important; font-size: 8pt; }
-  .sponsor-facts { grid-template-columns: 1fr 1fr; margin-top: 0; padding: 2.5mm 3mm; gap: 5mm; }
-  .sponsor-facts dt { font-size: 8pt; margin-bottom: .5mm; }
-  .sponsor-page section { margin-top: 3mm; padding: 2.5mm 3mm; border-radius: 2mm; box-shadow: none; break-inside: avoid; }
+  .sponsor-eyebrow { margin-bottom: .5mm; font-size: 7.5pt; }
+  .sponsor-page h1 { font-size: 20pt; margin-bottom: 1mm; }
+  .sponsor-page h2 { font-size: 10.5pt; margin-bottom: .7mm; }
+  .sponsor-page p { margin-bottom: 1mm; }
+  .sponsor-lede { font-size: 9pt; }
+  .sponsor-meta { margin-bottom: .5mm !important; font-size: 7.5pt; }
+  .sponsor-facts { grid-template-columns: 1fr 1fr; margin-top: 0; padding: 1.8mm 2.5mm; gap: 4mm; }
+  .sponsor-facts dt { font-size: 7.5pt; margin-bottom: .3mm; }
+  .sponsor-page section { margin-top: 1.8mm; padding: 1.7mm 2.5mm; border-radius: 1.5mm; box-shadow: none; break-inside: avoid; }
   .sponsor-benefits ul { padding-left: 4mm; }
-  .sponsor-benefits li + li { margin-top: 1mm; }
-  .sponsor-tier-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2mm; margin-top: 1.5mm; }
-  .sponsor-tier { padding: 2.4mm 3mm; border-radius: 1.5mm; box-shadow: none; }
-  .sponsor-tier h3 { font-size: 8.5pt; margin-bottom: .5mm; }
-  .sponsor-tier .tier-amount { font-size: 11pt; }
-  .sponsor-tier .tier-perk { margin-top: 1mm; font-size: 8pt; line-height: 1.25; }
+  .sponsor-benefits li + li { margin-top: .5mm; }
+  .sponsor-tier-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5mm; margin-top: 1mm; }
+  .sponsor-tier { padding: 1.5mm 2.5mm; border-radius: 1.2mm; box-shadow: none; }
+  .sponsor-tier h3 { font-size: 8pt; margin-bottom: .3mm; }
+  .sponsor-tier .tier-amount { font-size: 10pt; }
+  .sponsor-tier .tier-perk { margin-top: .7mm; font-size: 7.5pt; line-height: 1.2; }
   .sponsor-tier-featured { background: #f5f8ff; }
   .sponsor-tier-kind { grid-column: 1 / -1; }
   .sponsor-tier-kind p { margin-bottom: 0; }
-  .sponsor-levels-note { margin-top: 1mm !important; font-size: 8pt; }
-  .sponsor-contact { padding-top: 2.5mm; }
-  .sponsor-footer { padding: 2mm 0 0; margin-top: 3mm; font-size: 8pt; }
+  .sponsor-levels-note { margin-top: .7mm !important; font-size: 7.5pt; }
+  .sponsor-contact { padding-top: 1.7mm; }
+  .sponsor-footer { padding: 1mm 0 0; margin-top: 1.8mm; font-size: 7.5pt; }
 }
