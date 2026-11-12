@@ -68,3 +68,39 @@
   background: #e2e2e7;
   flex: none;
 }
+
+@media (max-width: 420px) {
+  .countdown,
+  .reel-row {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .reel-row {
+    gap: clamp(2px, 0.8vw, 4px);
+  }
+
+  .reel-unit {
+    flex: 1 1 0;
+    min-width: 0;
+    gap: 10px;
+  }
+
+  .reel-card {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .reel-card number-flow {
+    font-size: clamp(1.9rem, 8vw, 2.4rem);
+  }
+
+  .reel-label {
+    font-size: clamp(0.58rem, 2.6vw, 0.72rem);
+    white-space: nowrap;
+  }
+
+  .reel-sep {
+    height: 2.25rem;
+  }
+}
