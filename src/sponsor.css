@@ -8,7 +8,7 @@
   z-index: -1;
   top: -28px;
   left: 50%;
-  width: min(150vw, 1600px);
+  width: min(100vw, 1600px);
   height: clamp(420px, 55vw, 620px);
   transform: translateX(-50%);
   background-image: radial-gradient(circle, rgb(13 69 210 / 52%) 1px, transparent 1.3px);
