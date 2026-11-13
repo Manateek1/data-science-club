@@ -623,6 +623,13 @@ h1 {
 
 .sponsor-logo-link-cash .sponsor-logo-caption { font-size: 1rem; }
 
+.sponsor-event-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+
 .sponsor-logo-image {
   display: block;
   max-width: 100%;
@@ -644,6 +651,7 @@ h1 {
 .sponsor-logo-image-kariaa { width: min(100%, 150px); max-height: 38px; }
 .sponsor-logo-image-brilliant, .sponsor-logo-image-codecombat, .sponsor-logo-image-rise-research { width: min(100%, 150px); max-height: 42px; }
 .sponsor-logo-image-rheas-factory { width: 48px; height: 48px; max-height: 48px; }
+.sponsor-logo-image-rheas-factory-event { width: 68px; height: 68px; max-height: 68px; }
 .sponsor-logo-wordmark {
   display: flex;
   align-items: center;
