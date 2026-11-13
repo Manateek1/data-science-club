@@ -704,14 +704,20 @@
 }
 
 
+.team-leadership-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
 .president-card {
   position: relative;
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-columns: auto minmax(0, 1fr);
   align-items: center;
-  gap: 28px;
+  gap: 20px;
   min-height: 204px;
-  margin-bottom: 18px;
   padding: 26px 30px;
   overflow: hidden;
   border: 1px solid #9fb9ed;
@@ -752,48 +758,6 @@
   margin: 5px 0 0;
   color: #68758c;
   font-size: .84rem;
-}
-
-.president-mark {
-  align-self: start;
-  color: #c4d3f1;
-  font-size: 1rem;
-  font-weight: 700;
-  letter-spacing: .08em;
-}
-
-.leader-featured-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
-  margin-bottom: 14px;
-}
-
-.leader-card-featured {
-  min-height: 156px;
-  gap: 18px;
-  padding: 18px 20px;
-  border-color: #d8e1f2;
-  background: linear-gradient(145deg, #f8faff, #fff 72%);
-}
-
-.leader-card-featured .leader-photo {
-  display: block;
-  flex: 0 0 108px;
-  width: 108px;
-  height: 108px;
-  border: 3px solid #f1f4f8;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.leader-card-featured h3 {
-  font-size: 1.18rem;
-}
-
-.leader-card-featured .leader-role {
-  font-size: .7rem;
-  letter-spacing: .1em;
 }
 
 .leader-grid {
@@ -1297,14 +1261,7 @@
     height: 104px;
   }
 
-  .president-mark {
-    position: absolute;
-    top: 14px;
-    right: 16px;
-    font-size: .75rem;
-  }
-
-  .leader-featured-grid {
+  .team-leadership-grid {
     grid-template-columns: 1fr;
     gap: 9px;
     margin-bottom: 9px;
@@ -1319,26 +1276,11 @@
     min-height: 92px;
   }
 
-  .leader-card-featured {
-    min-height: 116px;
-    padding: 14px;
-  }
-
-  .leader-card-featured h3 {
-    font-size: 1.04rem;
-  }
-
   .leader-photo,
   .leader-initials {
     flex-basis: 60px;
     width: 60px;
     height: 60px;
-  }
-
-  .leader-card-featured .leader-photo {
-    flex-basis: 82px;
-    width: 82px;
-    height: 82px;
   }
 
   .faq.event-section {
