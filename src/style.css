@@ -642,6 +642,8 @@ h1 {
 .sponsor-logo-image-agentboxd { width: 48px; height: 48px; max-height: 48px; }
 .sponsor-logo-image-bootdev { width: min(100%, 150px); max-height: 42px; }
 .sponsor-logo-image-kariaa { width: min(100%, 150px); max-height: 38px; }
+.sponsor-logo-image-brilliant, .sponsor-logo-image-codecombat, .sponsor-logo-image-rise-research { width: min(100%, 150px); max-height: 42px; }
+.sponsor-logo-image-rheas-factory { width: 48px; height: 48px; max-height: 48px; }
 .sponsor-logo-wordmark {
   display: flex;
   align-items: center;
@@ -654,6 +656,8 @@ h1 {
   letter-spacing: -.035em;
   line-height: 1;
 }
+.sponsor-logo-wordmark-bright-data { color: #2475df; }
+.sponsor-logo-wordmark-defold { color: #26344b; letter-spacing: .08em; }
 .sponsor-logo-image-cleanshot { width: 52px; height: 52px; max-height: 52px; }
 
 .sponsor-logo-image-argosx { width: min(100%, 150px); max-height: 36px; }
