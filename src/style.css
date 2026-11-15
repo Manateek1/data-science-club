@@ -649,7 +649,7 @@ h1 {
 .sponsor-logo-image-agentboxd { width: 48px; height: 48px; max-height: 48px; }
 .sponsor-logo-image-bootdev { width: min(100%, 150px); max-height: 42px; }
 .sponsor-logo-image-kariaa { width: min(100%, 150px); max-height: 38px; }
-.sponsor-logo-image-brilliant, .sponsor-logo-image-codecombat, .sponsor-logo-image-rise-research { width: min(100%, 150px); max-height: 42px; }
+.sponsor-logo-image-brilliant, .sponsor-logo-image-codecombat { width: min(100%, 150px); max-height: 42px; }
 .sponsor-logo-image-rheas-factory { width: 48px; height: 48px; max-height: 48px; }
 .sponsor-logo-image-rheas-factory-event { width: 68px; height: 68px; max-height: 68px; }
 .sponsor-logo-wordmark {
