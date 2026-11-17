@@ -653,6 +653,7 @@ h1 {
 .sponsor-logo-image-rheas-factory { width: 48px; height: 48px; max-height: 48px; }
 .sponsor-logo-image-rheas-factory-event { width: 68px; height: 68px; max-height: 68px; }
 .sponsor-logo-image-agentel, .sponsor-logo-image-underlife { width: 48px; height: 48px; max-height: 48px; object-fit: contain; }
+.sponsor-logo-image-beauty-brains { width: min(100%, 120px); max-height: 52px; object-fit: contain; }
 .sponsor-logo-wordmark {
   display: flex;
   align-items: center;
@@ -666,8 +667,6 @@ h1 {
   line-height: 1;
 }
 .sponsor-logo-wordmark-bright-data { color: #2475df; }
-.sponsor-logo-wordmark-defold { color: #26344b; letter-spacing: .08em; }
-.sponsor-logo-wordmark-beauty-brains { color: #3b2140; font-size: .88rem; letter-spacing: -.045em; line-height: 1.12; }
 .sponsor-logo-image-cleanshot { width: 52px; height: 52px; max-height: 52px; }
 
 .sponsor-logo-image-argosx { width: min(100%, 150px); max-height: 36px; }
