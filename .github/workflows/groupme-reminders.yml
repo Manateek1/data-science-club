@@ -70,6 +70,11 @@ jobs:
             --header "Authorization: Bearer $REMINDER_SECRET" \
             "$request_url")"
 
+          if [[ "$status" == "204" ]]; then
+            echo "Reminder expired before delivery; skipped."
+            exit 0
+          fi
+
           if [[ "$status" != "200" ]]; then
             echo "::error::Reminder endpoint returned HTTP $status."
             cat "$response_file"

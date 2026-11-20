@@ -10,7 +10,8 @@ America/Los_Angeles time:
 The schedule uses minutes away from the top of the hour to reduce GitHub
 Actions queue delays. GitHub can still delay a scheduled workflow, so the
 endpoint skips stale runs: the morning reminders expire at 10:00 AM, and the
-12:50 PM reminder expires at 1:00 PM. This prevents an old reminder from
+12:50 PM reminder expires at 1:00 PM. A skipped run returns HTTP 204 and is
+treated as successful by the workflow. This prevents an old reminder from
 appearing after the meeting.
 
 ## Required Vercel settings
