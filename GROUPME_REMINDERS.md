@@ -1,16 +1,17 @@
 # GroupMe meeting reminders
 
-The club receives three reminders through a GitHub Actions schedule:
+The club receives three reminders through a GitHub Actions schedule, all in
+America/Los_Angeles time:
 
-- Thursday at 5:07 PM: an invitation for Friday's lunch meeting.
+- Thursday at 8:17 AM: an invitation for Friday's lunch meeting.
 - Friday at 7:17 AM: a same-day reminder for the lunch meeting.
-- Friday at 11:23 AM: a final reminder to meet at lunch in Room 105.
+- Friday at 12:50 PM: a final reminder to meet at lunch in Room 105.
 
-All times use America/Los_Angeles, including daylight saving time. GitHub
-Actions calls the production Vercel function with the reminder ID for that
-schedule, so a delayed workflow still sends the correct reminder instead of
-silently skipping it based on the current hour. The schedule uses minutes away
-from the top of the hour to reduce GitHub Actions queue delays.
+The schedule uses minutes away from the top of the hour to reduce GitHub
+Actions queue delays. GitHub can still delay a scheduled workflow, so the
+endpoint skips stale runs: the morning reminders expire at 10:00 AM, and the
+12:50 PM reminder expires at 1:00 PM. This prevents an old reminder from
+appearing after the meeting.
 
 ## Required Vercel settings
 
@@ -39,3 +40,4 @@ by Vercel.
 
 The endpoint accepts only GET requests, requires the shared Bearer secret,
 sends the bot ID in the HTTPS request body, and never logs either secret.
+

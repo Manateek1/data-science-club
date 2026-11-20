@@ -2,11 +2,11 @@ name: GroupMe reminders
 
 on:
   schedule:
-    - cron: "7 17 * * 4"
+    - cron: "17 8 * * 4"
       timezone: "America/Los_Angeles"
     - cron: "17 7 * * 5"
       timezone: "America/Los_Angeles"
-    - cron: "23 11 * * 5"
+    - cron: "50 12 * * 5"
       timezone: "America/Los_Angeles"
   workflow_dispatch:
     inputs:
@@ -47,9 +47,9 @@ jobs:
             request_url="$REMINDER_ENDPOINT?test=1"
           else
             case "$SCHEDULE_EXPRESSION" in
-              "7 17 * * 4") reminder_id="thursday-evening" ;;
+              "17 8 * * 4") reminder_id="thursday-morning" ;;
               "17 7 * * 5") reminder_id="friday-morning" ;;
-              "23 11 * * 5") reminder_id="friday-meeting" ;;
+              "50 12 * * 5") reminder_id="friday-meeting" ;;
               *)
                 echo "::error::Unrecognized schedule expression."
                 exit 1
@@ -77,3 +77,4 @@ jobs:
           fi
 
           cat "$response_file"
+
