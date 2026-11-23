@@ -53,3 +53,5 @@ Project layout:
 Vercel auto-detects Vite: **Build Command** `vite build` (or `npm run
 build`), **Output Directory** `dist`. No extra settings needed — connect the
 repo and deploy.
+
+For the GroupMe scam review monitor, see [GROUPME_MODERATION.md](GROUPME_MODERATION.md).
