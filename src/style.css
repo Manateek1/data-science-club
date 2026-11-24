@@ -614,16 +614,14 @@ h1 {
 .sponsor-logo-link-cash {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  gap: 18px;
+  justify-content: center;
+  gap: 10px;
   min-height: 118px;
-  padding: 16px 20px;
-  text-align: left;
+  padding: 12px 8px;
+  text-align: center;
 }
 
 .sponsor-logo-link-cash .sponsor-logo-caption { font-size: 1rem; }
-
-.sponsor-logo-link-lunabill { justify-content: center; }
 
 .sponsor-event-list {
   display: grid;
@@ -657,7 +655,33 @@ h1 {
 .sponsor-logo-image-agentel, .sponsor-logo-image-underlife { width: 48px; height: 48px; max-height: 48px; object-fit: contain; }
 .sponsor-logo-image-beauty-brains { width: min(100%, 120px); max-height: 52px; object-fit: contain; }
 .sponsor-logo-image-formaloo { width: min(100%, 190px); max-height: 42px; object-fit: contain; }
-.sponsor-logo-image-lunabill { width: 32px; height: 32px; max-height: 32px; object-fit: contain; }
+.sponsor-logo-image-lunabill { overflow: hidden; }
+
+.sponsor-event-list .sponsor-logo-image {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  max-height: 56px;
+}
+
+@media (max-width: 640px) {
+  .sponsor-event-list .sponsor-logo-link-cash {
+    flex-direction: column;
+    gap: 6px;
+    padding: 8px 4px;
+  }
+
+  .sponsor-event-list .sponsor-logo-image {
+    width: 36px;
+    height: 36px;
+    max-height: 36px;
+  }
+
+  .sponsor-event-list .sponsor-logo-caption {
+    font-size: .75rem;
+    overflow-wrap: anywhere;
+  }
+}
 .sponsor-logo-image-dataquest { width: min(100%, 150px); max-height: 42px; object-fit: contain; }
 .sponsor-logo-image-devswarm { width: min(100%, 150px); max-height: 42px; object-fit: contain; border-radius: 6px; }
 .sponsor-logo-image-parsagon { width: 48px; height: 48px; max-height: 48px; object-fit: contain; }
