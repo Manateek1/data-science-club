@@ -156,7 +156,7 @@ export default async function handler(request, response) {
     return response.status(503).json({ error: "Moderation mode is invalid." });
   }
 
-  if (mode === "review" && !process.env.GROUPME_BOT_ID) {
+  if (mode === "review" && !process.env.GROUPME_MODERATION_BOT_ID) {
     return response.status(503).json({ error: "Review alerts are not configured." });
   }
 
@@ -198,7 +198,7 @@ export default async function handler(request, response) {
 
   let alertStatus = "dry-run";
   if (mode === "review") {
-    alertStatus = await postReviewAlert(process.env.GROUPME_BOT_ID);
+    alertStatus = await postReviewAlert(process.env.GROUPME_MODERATION_BOT_ID);
   }
 
   console.info(JSON.stringify({
