@@ -599,29 +599,29 @@ h1 {
   outline-offset: 2px;
 }
 
-.sponsor-logo-link-lead {
+.sponsor-logo-link.sponsor-logo-link-lead {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   gap: 20px;
-  min-height: 132px;
+  min-height: 158px;
   padding: 18px 22px;
   text-align: left;
 }
 
-.sponsor-logo-link-lead .sponsor-logo-caption { font-size: 1.15rem; }
+.sponsor-logo-link-lead .sponsor-logo-caption { font-size: 1.38rem; }
 
-.sponsor-logo-link-cash {
+.sponsor-logo-link.sponsor-logo-link-cash {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  min-height: 118px;
+  min-height: 142px;
   padding: 12px 8px;
   text-align: center;
 }
 
-.sponsor-logo-link-cash .sponsor-logo-caption { font-size: 1rem; }
+.sponsor-logo-link-cash .sponsor-logo-caption { font-size: 1.2rem; }
 
 .sponsor-event-list {
   display: grid;
@@ -638,10 +638,10 @@ h1 {
 }
 
 .sponsor-logo-image-fastyr {
-  width: 88px;
-  height: 88px;
-  max-height: 88px;
-  padding: 9px;
+  width: 106px;
+  height: 106px;
+  max-height: 106px;
+  padding: 11px;
   border-radius: 10px;
   background: #0b1730;
 }
@@ -659,26 +659,27 @@ h1 {
 
 .sponsor-event-list .sponsor-logo-image {
   flex-shrink: 0;
-  width: 56px;
-  height: 56px;
-  max-height: 56px;
+  width: 67px;
+  height: 67px;
+  max-height: 67px;
 }
 
 @media (max-width: 640px) {
   .sponsor-event-list .sponsor-logo-link-cash {
     flex-direction: column;
+    min-height: 122px;
     gap: 6px;
     padding: 8px 4px;
   }
 
   .sponsor-event-list .sponsor-logo-image {
-    width: 36px;
-    height: 36px;
-    max-height: 36px;
+    width: 43px;
+    height: 43px;
+    max-height: 43px;
   }
 
   .sponsor-event-list .sponsor-logo-caption {
-    font-size: .75rem;
+    font-size: .9rem;
     overflow-wrap: anywhere;
   }
 }
