@@ -1,57 +1,41 @@
 # Acalanes Data Fest 2026
 
-Ultra-minimal landing page for the Acalanes Data Science Club hackathon:
-a single centered viewport — light nav, giant Poppins headline
-("Acalanes Data Fest 2026", "2026" in school blue), one subline, one meta
-line, one blue "Follow for updates" button, a scroll-driven cinematic, and
-a slim footer.
+This repository contains the website for Acalanes Data Fest 2026, a free, student-run data science and AI hackathon organized by the Acalanes Data Science Club and hosted by BRIDGEGOOD in Oakland on November 21, 2026.
 
-Between the hero and the FAQ, scrolling drives a pinned cinematic
-(~600vh): blue squares fill the screen, then "The Bay Area has always been
-the center of technology." appears, then a 3D California hologram, then
-everything fades back to white and "Acalanes Data Fest gathers
-California's brightest young innovators in one place." appears before the
-page continues. `prefers-reduced-motion` (or no JS) skips the pinning and
-shows a static hero + final text.
+Live site: [ahsdata.com](https://ahsdata.com)
 
-Instagram [@aca.datasci.club](https://instagram.com/aca.datasci.club) is the
-only signup path; event date, location, and registration are TBD.
+## Site
 
-**Countdown date is a placeholder.** The hero countdown targets
-`2026-10-30T00:00:00-07:00` (America/Los_Angeles) "for now". To change it,
-update `TARGET_ISO` in `src/countdown.js` (keep the UTC offset in sync
-with the timezone for the chosen date) and the `<time datetime="…">`
-element in `index.html`.
+- `/` — Event overview, schedule, prizes, awards, team, FAQs, sponsors, and registration
+- `/judge` — Judge application page
+- `/sponsor` — Sponsor information and downloadable prospectus
 
-The hero carries a live Bayer-dithered wave-field canvas backdrop in one
-blue and a letter-by-letter headline roll-in; the California hologram uses
-the real state boundary (simplified from US Census map data).
+The site is built with Vite and vanilla JavaScript and CSS. It uses Number Flow for the animated prize display. Vercel serves the static site and API routes.
 
-## Develop
+## Local development
 
 ```bash
 npm install
-npm run dev      # local dev server with hot reload
-npm run build    # production build into dist/
-npm run preview  # preview the production build
+npm run dev         # Start the local Vite server
+npm run build       # Build the production site into dist/
+npm run preview     # Preview the production build
+npm test            # Run the Node.js test suite
+npm run prospectus  # Regenerate the sponsorship PDF from the sponsor page
 ```
 
-Project layout:
+## Repository map
 
-- `index.html` — Vite entry at the repo root
-- `src/main.js` — entry module (imports CSS, starts hero effects + cinematic)
-- `src/hero-grid.js` — dithered wave-field hero backdrop (canvas)
-- `src/faq.js` — animated FAQ expand/collapse
-- `src/hero-intro.js` — letter-by-letter headline roll-in
-- `src/cinematic.js` — scroll-progress → phase mapping + canvas squares
-- `src/cinematic.css` — pin/stage/layer styles + hologram keyframes
-- `src/style.css` — all styles
-- `public/` — static assets served as-is (`favicon.svg`, blue "A" on white)
+- `index.html` — Main event page
+- `judge.html`, `sponsor.html` — Judge and sponsor pages
+- `src/` — Page styles and JavaScript interactions
+- `public/` — Logos, sponsor assets, prospectus, and other static files
+- `api/` — Vercel serverless endpoints, including GroupMe tools
+- `scripts/` — Prospectus generation and GroupMe utilities
+- `.github/workflows/groupme-reminders.yml` — Scheduled club meeting reminders
+- `GROUPME_REMINDERS.md`, `GROUPME_MODERATION.md` — GroupMe setup and operations
 
-## Deploy (Vercel)
+## Deployment
 
-Vercel auto-detects Vite: **Build Command** `vite build` (or `npm run
-build`), **Output Directory** `dist`. No extra settings needed — connect the
-repo and deploy.
+Vercel detects the Vite app automatically. Use `npm run build` as the build command and `dist` as the output directory. The rewrites for `/judge` and `/sponsor` are defined in `vercel.json`.
 
-For the GroupMe scam review monitor, see [GROUPME_MODERATION.md](GROUPME_MODERATION.md).
+The GroupMe reminder and moderation features require environment variables and GitHub Actions secrets. Follow the setup guides above; never commit bot IDs, tokens, or shared secrets to the repository.
