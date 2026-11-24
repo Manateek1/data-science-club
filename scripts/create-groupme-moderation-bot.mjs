@@ -75,7 +75,7 @@ try {
 
   if (existingBot) {
     console.log("A bot is already registered for this group and callback. Setup stopped to avoid duplicate bots or welcome messages.");
-    console.log(`Use this bot ID in Vercel if you later enable review alerts: ${existingBot.bot_id}`);
+    console.log(`Use this bot ID as GROUPME_MODERATION_BOT_ID in Vercel only if you later enable review alerts: ${existingBot.bot_id}`);
     process.exit(0);
   }
 
@@ -116,7 +116,7 @@ try {
 
   console.log("Created the GroupMe review bot and posted its introduction to the group.");
   console.log(`Bot ID: ${botId}`);
-  console.log("Keep this ID private. Add it to Vercel only if you later enable review alerts.");
+  console.log("Keep this ID private. If you later enable review alerts, set it as GROUPME_MODERATION_BOT_ID in Vercel.");
 } catch (error) {
   console.error(`GroupMe setup failed (${error instanceof Error ? error.name : "unknown error"}). Check the bot list before trying again.`);
   process.exit(1);
