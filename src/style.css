@@ -655,7 +655,7 @@ h1 {
 .sponsor-logo-image-agentel, .sponsor-logo-image-underlife { width: 48px; height: 48px; max-height: 48px; object-fit: contain; }
 .sponsor-logo-image-beauty-brains { width: min(100%, 120px); max-height: 52px; object-fit: contain; }
 .sponsor-logo-image-formaloo { width: min(100%, 190px); max-height: 42px; object-fit: contain; }
-.sponsor-logo-image-lunabill { width: min(100%, 160px); max-height: 42px; object-fit: contain; }
+.sponsor-logo-image-lunabill { width: 28px; height: 28px; max-height: 28px; object-fit: cover; object-position: left center; }
 .sponsor-logo-image-dataquest { width: min(100%, 150px); max-height: 42px; object-fit: contain; }
 .sponsor-logo-image-devswarm { width: min(100%, 150px); max-height: 42px; object-fit: contain; border-radius: 6px; }
 .sponsor-logo-image-parsagon { width: 48px; height: 48px; max-height: 48px; object-fit: contain; }
