@@ -187,7 +187,7 @@
 
 .photo-grid figure {
   display: grid;
-  grid-template-rows: 1fr auto;
+  grid-template-rows: auto 1fr;
   gap: 8px;
   min-width: 0;
   margin: 0;
@@ -209,7 +209,7 @@
 .photo-grid img {
   display: block;
   width: 100%;
-  height: 100%;
+  height: auto;
   aspect-ratio: 4 / 3;
   object-fit: cover;
 }
@@ -217,6 +217,11 @@
 .photo-grid .photo-feature {
   grid-column: span 2;
   grid-row: span 2;
+  grid-template-rows: 1fr auto;
+}
+
+.photo-feature img {
+  height: 100%;
 }
 
 .photo-grid figcaption {
@@ -233,6 +238,11 @@
   .photo-grid .photo-feature {
     grid-column: 1 / -1;
     grid-row: auto;
+    grid-template-rows: auto 1fr;
+  }
+
+  .photo-feature img {
+    height: auto;
   }
 }
 
